@@ -1,0 +1,14 @@
+#dom {
+  position: absolute;
+  height: 100%;
+  width: 25%;
+  box-sizing: border-box;
+}
+
+#viewport {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
