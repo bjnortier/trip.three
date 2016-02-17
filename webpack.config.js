@@ -6,10 +6,12 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        include: /(test)/,
+        include: /(lib|test|node_modules\/trip.core\/lib|node_modules\/trip.dom\/lib)/,
         loader: 'babel',
         query: {
-          presets: ['es2015']
+          presets: [
+            require.resolve('babel-preset-es2015'),
+          ]
         }
       },
     ],
@@ -18,7 +20,7 @@ module.exports = {
     path: 'test/functional/bundles/',
     filename: "[name].bundle.js"
   },
-  devtool: "#source-map",
+  devtool: "eval",
   node: {
     net: 'empty',
     dns: 'empty',

@@ -14,7 +14,7 @@ class EventCaptureController extends tripcore.Controller {
   constructor() {
     super(new EventCaptureModel());
 
-    var domScene = new tripdom.DOMScene($('#dom'));
+    var domScene = new tripdom.Scene($('#dom'));
     this.addView(domScene, EventCaptureView);
 
     var threeJSSceneOptions = {
