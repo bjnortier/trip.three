@@ -1,8 +1,8 @@
 const lib = require('../../../..');
 const THREE = lib.THREE;
-const ThreeJSView = lib.View;
+const View = lib.View;
 
-class CubeView extends ThreeJSView {
+class CubeView extends View {
 
   constructor(model, scene, options) {
     super(model, scene);

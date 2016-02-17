@@ -1,7 +1,6 @@
-var trip = require('../../../..');
-var DOMView = trip.views.DOMView;
+var tripdom = require('trip.dom');
 
-class CameraSelectView extends DOMView {
+class CameraSelectView extends tripdom.View {
 
   constructor(model, scene) {
     super(model, scene);

@@ -1,6 +1,7 @@
 module.exports = {
   entry: {
     'events.test': "./test/functional/src/events.test.js",
+    'cameras.test': "./test/functional/src/cameras.test.js",
   },
   module: {
     loaders: [
