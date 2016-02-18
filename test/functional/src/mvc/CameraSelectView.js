@@ -9,9 +9,9 @@ class CameraSelectView extends tripdom.View {
   render() {
     let template = `
       <input type="button" value="perspective"><br>
-      <input type="button" value="xaxis"><br>
-      <input type="button" value="yaxis"><br>
-      <input type="button" value="zaxis"><br>
+      <input type="button" value="x+"><input type="button" value="x-"><br>
+      <input type="button" value="y+"><input type="button" value="y-"><br>
+      <input type="button" value="z+"><input type="button" value="z-"><br>
     `;
     this.toHtml(template, {});
   }
@@ -19,9 +19,12 @@ class CameraSelectView extends tripdom.View {
   events() {
     return {
       'click [value="perspective"]': 'clickPerspective',
-      'click [value="xaxis"]': 'clickXAxis',
-      'click [value="yaxis"]': 'clickYAxis',
-      'click [value="zaxis"]': 'clickZAxis',
+      'click [value="x+"]': 'x+',
+      'click [value="x-"]': 'x-',
+      'click [value="y+"]': 'y+',
+      'click [value="y-"]': 'y-',
+      'click [value="z+"]': 'z+',
+      'click [value="z-"]': 'z-',
     };
   }
 

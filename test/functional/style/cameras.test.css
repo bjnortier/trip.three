@@ -1,9 +1,11 @@
 #dom {
   position: absolute;
-  height: 100px;
-  width: 100px;
   box-sizing: border-box;
-  border: solid thin black;
+}
+
+#dom input[type="button"] {
+  font-size: 20px;
+  margin: 5px;
 }
 
 #viewport {

@@ -64,14 +64,33 @@ class CamerasController extends tripcore.Controller {
     this.model.mode = 'orthographic';
   }
 
-  clickXAxis() {
-    if ((this.model.mode === 'orthographic') && (this.model.orthoMode === 'x+')) {
-      this.scene.setOrthoXNeg();
-      this.model.orthoMode = 'x-';
-    } else {
-      this.scene.setOrthoXPos();
-      this.model.orthoMode = 'x+';
-    }
+  'x+'() {
+    this.scene.setOrthoXPos();
+    this.model.mode = 'orthographic';
+  }
+
+  'x-'() {
+    this.scene.setOrthoXNeg();
+    this.model.mode = 'orthographic';
+  }
+
+  'y+'() {
+    this.scene.setOrthoYPos();
+    this.model.mode = 'orthographic';
+  }
+
+  'y-'() {
+    this.scene.setOrthoYNeg();
+    this.model.mode = 'orthographic';
+  }
+
+  'z+'() {
+    this.scene.setOrthoZPos();
+    this.model.mode = 'orthographic';
+  }
+
+  'z-'() {
+    this.scene.setOrthoZNeg();
     this.model.mode = 'orthographic';
   }
 
