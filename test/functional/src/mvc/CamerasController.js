@@ -5,6 +5,7 @@ const $ = tripdom.$;
 const lib = require('../../../..');
 
 var CubeView = require('./CubeView');
+var AxesView = require('./AxesView');
 var CameraSelectView = require('./CameraSelectView');
 
 class CamerasController extends tripcore.Controller {
@@ -16,22 +17,29 @@ class CamerasController extends tripcore.Controller {
     this.addView(domScene, CameraSelectView);
 
     var options = {
-      cameraPosition: {
-        x: 0, y: -7.5, z: 2.5
-      }
+      distance: 10,
+      azimuth: Math.PI/4,
+      elevation: 1.08,
     };
     var scene = new lib.Scene($('#viewport'), options);
     this.addView(scene, CubeView, {
       color: 0xff0000,
-      position: {x: -2.5, y: 0, z: 0},
-    });
-    this.addView(scene, CubeView, {
-      color: 0x00ff00,
-      position: {x: 0, y: 0, z: 1},
+      position: {x: 0, y: 0, z: 2.5},
     });
     this.addView(scene, CubeView, {
       color: 0x0000ff,
       position: {x: 2.5, y: 0, z: 0},
+    });
+    this.addView(scene, CubeView, {
+      color: 0x6699ff,
+      position: {x: -2.5, y: 0, z: 0},
+    });
+    this.addView(scene, CubeView, {
+      color: 0x00ff00,
+      position: {x: 0, y: 2.5, z: 0},
+    });
+    this.addView(scene, AxesView, {
+      length: 5,
     });
     this.scene = scene;
   }
