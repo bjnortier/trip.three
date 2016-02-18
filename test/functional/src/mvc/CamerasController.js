@@ -37,11 +37,9 @@ class CamerasController extends tripcore.Controller {
   }
 
   clickPerspective() {
-    if (this.model.mode !== 'perspective') {
-      this.scene.setPerspective();
-      this.model.mode = 'perspective';
-      this.model.orthoModel = null;
-    }
+    this.scene.setPerspective();
+    this.model.mode = 'perspective';
+    this.model.orthoModel = null;
   }
 
   clickZAxis() {
@@ -76,7 +74,6 @@ class CamerasController extends tripcore.Controller {
     }
     this.model.mode = 'orthographic';
   }
-
 
 }
 
