@@ -44,32 +44,10 @@ class CamerasController extends tripcore.Controller {
     this.scene = scene;
   }
 
-  clickPerspective() {
+  perspective() {
     this.scene.setPerspective();
     this.model.mode = 'perspective';
     this.model.orthoModel = null;
-  }
-
-  clickZAxis() {
-    if ((this.model.mode === 'orthographic') && (this.model.orthoMode === 'z+')) {
-      this.scene.setOrthoZNeg();
-      this.model.orthoMode = 'z-';
-    } else {
-      this.scene.setOrthoZPos();
-      this.model.orthoMode = 'z+';
-    }
-    this.model.mode = 'orthographic';
-  }
-
-  clickYAxis() {
-    if ((this.model.mode === 'orthographic') && (this.model.orthoMode === 'y+')) {
-      this.scene.setOrthoYNeg();
-      this.model.orthoMode = 'y-';
-    } else {
-      this.scene.setOrthoYPos();
-      this.model.orthoMode = 'y+';
-    }
-    this.model.mode = 'orthographic';
   }
 
   'x+'() {
@@ -100,6 +78,10 @@ class CamerasController extends tripcore.Controller {
   'z-'() {
     this.scene.setOrthoZNeg();
     this.model.mode = 'orthographic';
+  }
+
+  zoomToExtents() {
+    this.scene.zoomToExtents();
   }
 
 }

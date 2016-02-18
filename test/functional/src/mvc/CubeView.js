@@ -5,7 +5,7 @@ const View = lib.View;
 class CubeView extends View {
 
   constructor(model, scene, options) {
-    super(model, scene);
+    super(model, scene, options);
 
     options = options || {};
     this.label = options.label;
