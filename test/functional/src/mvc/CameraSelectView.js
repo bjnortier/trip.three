@@ -18,10 +18,10 @@ class CameraSelectView extends tripdom.View {
 
   events() {
     return {
-      'click [value="perspective"]': 'toPerspective',
-      'click [value="xaxis"]': 'toXAxis',
-      'click [value="yaxis"]': 'toYAxis',
-      'click [value="zaxis"]': 'toZAxis',
+      'click [value="perspective"]': 'clickPerspective',
+      'click [value="xaxis"]': 'clickXAxis',
+      'click [value="yaxis"]': 'clickYAxis',
+      'click [value="zaxis"]': 'clickZAxis',
     };
   }
 

@@ -7,7 +7,7 @@ const lib = require('../../../..');
 var CubeView = require('./CubeView');
 var CameraSelectView = require('./CameraSelectView');
 
-class EventCaptureController extends tripcore.Controller {
+class CamerasController extends tripcore.Controller {
 
   constructor() {
     super(new tripcore.Model());
@@ -36,15 +36,48 @@ class EventCaptureController extends tripcore.Controller {
     this.scene = scene;
   }
 
-  toPerspective() {
-    this.scene.switchToPerspective();
+  clickPerspective() {
+    if (this.model.mode !== 'perspective') {
+      this.scene.setPerspective();
+      this.model.mode = 'perspective';
+      this.model.orthoModel = null;
+    }
   }
 
-  toZAxis() {
-    this.scene.switchToTopBottom();
+  clickZAxis() {
+    if ((this.model.mode === 'orthographic') && (this.model.orthoMode === 'z+')) {
+      this.scene.setOrthoZNeg();
+      this.model.orthoMode = 'z-';
+    } else {
+      this.scene.setOrthoZPos();
+      this.model.orthoMode = 'z+';
+    }
+    this.model.mode = 'orthographic';
+  }
+
+  clickYAxis() {
+    if ((this.model.mode === 'orthographic') && (this.model.orthoMode === 'y+')) {
+      this.scene.setOrthoYNeg();
+      this.model.orthoMode = 'y-';
+    } else {
+      this.scene.setOrthoYPos();
+      this.model.orthoMode = 'y+';
+    }
+    this.model.mode = 'orthographic';
+  }
+
+  clickXAxis() {
+    if ((this.model.mode === 'orthographic') && (this.model.orthoMode === 'x+')) {
+      this.scene.setOrthoXNeg();
+      this.model.orthoMode = 'x-';
+    } else {
+      this.scene.setOrthoXPos();
+      this.model.orthoMode = 'x+';
+    }
+    this.model.mode = 'orthographic';
   }
 
 
 }
 
-module.exports = EventCaptureController;
+module.exports = CamerasController;
