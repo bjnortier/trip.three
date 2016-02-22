@@ -40,6 +40,7 @@ class CamerasController extends tripcore.Controller {
     });
     this.addView(scene, AxesView, {
       length: 5,
+      name: 'axes',
     });
     this.scene = scene;
   }
