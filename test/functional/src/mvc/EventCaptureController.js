@@ -19,6 +19,8 @@ class EventCaptureController extends tripcore.Controller {
 
     var options = {
       distance: 5,
+      elevation: Math.PI/4,
+      azimuth: -Math.PI/4,
     };
     var threeJSScene = new lib.Scene($('#viewport'), options);
     this.addView(threeJSScene, CubeView, {

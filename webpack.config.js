@@ -2,6 +2,8 @@ module.exports = {
   entry: {
     'events.test': "./test/functional/src/events.test.js",
     'cameras.test': "./test/functional/src/cameras.test.js",
+    'annotations.test': "./test/functional/src/annotations.test.js",
+    'renderingorder.test': "./test/functional/src/renderingorder.test.js",
   },
   module: {
     loaders: [
@@ -18,7 +20,7 @@ module.exports = {
     ],
   },
   output: {
-    path: 'test/functional/bundles/',
+    path: 'test/functional/bundle/',
     filename: "[name].bundle.js"
   },
   devtool: "eval",

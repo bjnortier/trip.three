@@ -5,6 +5,7 @@ const View = lib.View;
 class AxesView extends View {
 
   constructor(model, scene, options) {
+    options = options || {};
     super(model, scene, options);
     this.length = options.length || 1000;
   }
