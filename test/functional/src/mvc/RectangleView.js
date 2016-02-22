@@ -1,21 +1,18 @@
-var trip = require('../../../..');
-var THREE = trip.THREE;
-var ThreeJSView = trip.views.ThreeJSView;
+const lib = require('../../../..');
+const THREE = lib.THREE;
+const View = lib.View;
 
-class Rectangle extends ThreeJSView {
+class Rectangle extends View {
 
   constructor(model, scene, options) {
     super(model, scene);
 
     options = options || {};
     this.label = options.label;
-    options.color = (options.color === undefined) ? 
+    options.color = (options.color === undefined) ?
       0x6666ff : options.color;
-    options.position = (options.position === undefined) ? 
+    options.position = (options.position === undefined) ?
       {x: 0, y: 0, z: 0} : options.position;
-    options.size = (options.size === undefined) ?
-      1 : options.size;
-    options.order = (options.order === undefined) ? 0 : options.order;
     this.options = options;
   }
 
@@ -30,7 +27,7 @@ class Rectangle extends ThreeJSView {
     geometry.computeFaceNormals();
 
     var material = new THREE.MeshLambertMaterial({
-      color: this.options.color, 
+      color: this.options.color,
       side: THREE.DoubleSide,
     });
     material.depthWrite = false;
