@@ -39,6 +39,7 @@ class CamerasController extends tripcore.Controller {
     this.addView(scene, CubeView, {
       color: 0x00ff00,
       position: {x: 0, y: 2.5, z: 0},
+      name: 'green',
     });
     this.addView(scene, AxesView, {
       length: 5,
@@ -94,8 +95,8 @@ class CamerasController extends tripcore.Controller {
 
   zoomToLayer1() {
     let filters = {
-      layer: (scene) => {
-        return scene.index === 1;
+      layer: (index) => {
+        return index === 1;
       },
     };
     this.scene.zoomToExtents(filters);
@@ -103,13 +104,12 @@ class CamerasController extends tripcore.Controller {
 
   zoomToGreenCube() {
     let filters = {
-      node: (node) => {
-        return node.position.y > 2;
+      view: (view) => {
+        return view.sceneObject.name === 'green';
       },
     };
     this.scene.zoomToExtents(filters);
   }
-
 
 }
 
