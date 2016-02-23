@@ -1,7 +1,8 @@
-const trip = require('../../../..');
-const ThreeJSAnnotationView = trip.views.ThreeJSAnnotationView;
+const lib = require('../../../..');
+const AnnotationView = lib.AnnotationView;
+console.log('!!', AnnotationView);
 
-class CornerAnnotationView extends ThreeJSAnnotationView {
+class CornerAnnotationView extends AnnotationView {
 
   constructor(model, threeJSScene, position) {
     super(model, threeJSScene, position);

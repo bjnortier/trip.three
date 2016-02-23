@@ -2,10 +2,10 @@ const trip = require('trip.core');
 const tripdom = require('trip.dom');
 const $ = tripdom.$;
 
-const lib = require('../../..');
+const lib = require('../../../..');
 const Scene = lib.Scene;
 
-const AxesView = lib.AxesView;
+const AxesView = require('./AxesView');
 const CubeView = require('./CubeView');
 const CornerAnnotationView = require('./CornerAnnotationView');
 
@@ -15,9 +15,9 @@ class AnnotationsController extends trip.Controller {
     super(new trip.Model());
 
     var options = {
-      cameraPosition: {
-        x: 5, y: 5, z: 2,
-      }
+      distance: 5,
+      elevation: Math.PI/4,
+      azimuth: -Math.PI/4,
     };
     var scene = new Scene($('#viewport'), options);
 

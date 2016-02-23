@@ -6,7 +6,6 @@ const jshint = require('gulp-jshint');
 const jscs = require('gulp-jscs');
 const jscsStylish = require('gulp-jscs-stylish');
 const mocha = require('gulp-mocha');
-const babel = require('gulp-babel');
 
 const srcFiles = path.join('lib', '**', '*.js');
 const unitTestFiles = path.join('test', 'unit', '**', '*.test.js');
@@ -31,22 +30,14 @@ gulp.task('jscs', () => {
     .pipe(jscsStylish());
 });
 
-gulp.task('babel', ['jshint', 'jscs'], () => {
-  return gulp.src(srcFiles)
-    .pipe(babel({
-      presets: ['es2015']
-    }))
-    .pipe(gulp.dest('build'));
-});
-
-gulp.task('unit', ['babel'], () => {
+gulp.task('unit', ['jshint', 'jscs'], () => {
   return gulp.src(unitTestFiles)
     .pipe(mocha({}));
 });
 
 gulp.task('test', ['jshint', 'jscs', 'unit']);
 
-gulp.task('default', ['babel', 'test']);
+gulp.task('default', ['test']);
 
 gulp.task('watch', () => {
   gulp.watch(srcFiles, ['clearconsole', 'jshint', 'jscs', 'unit']);

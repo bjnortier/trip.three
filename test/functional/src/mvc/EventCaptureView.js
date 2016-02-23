@@ -1,6 +1,6 @@
 var tripdom = require('trip.dom');
 
-class EventCaptureView extends tripdom.DOMView {
+class EventCaptureView extends tripdom.View {
 
   constructor(model, scene) {
     super(model, scene);

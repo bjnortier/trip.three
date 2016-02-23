@@ -1,24 +1,26 @@
-var trip = require('../../../..');
-var $ = trip.$;
-var ThreeJSScene = trip.scenes.ThreeJSScene;
-var Controller = trip.Controller;
-var Model = trip.Model;
+const trip = require('trip.core');
+const $ = require('trip.dom').$;
+const Controller = trip.Controller;
+const Model = trip.Model;
 
-var RectangleView = require('./RectangleView');
+const lib = require('../../../..');
+const Scene = lib.Scene;
+
+const RectangleView = require('./RectangleView');
 
 class RenderingOrderController extends Controller {
 
   constructor() {
     super(new Model());
 
-    var threeJSSceneOptions = {
-      cameraPosition: {
-        x: 5, y: 5, z: 2,
-      }
+    var options = {
+      distance: 10,
+      azimuth: Math.PI/4,
+      elevation: 1.08,
     };
-    var threeJSScene = new ThreeJSScene($('#viewport'), threeJSSceneOptions);
+    var scene = new Scene($('#viewport'), options);
 
-    this.addView(threeJSScene, RectangleView,
+    this.addView(scene, RectangleView,
       {
         position: {
           x: 0.0,
@@ -26,9 +28,8 @@ class RenderingOrderController extends Controller {
           z: 0,
         },
         color: 0x0000ff,
-        order: 0,
       });
-    this.addView(threeJSScene, RectangleView,
+    this.addView(scene, RectangleView,
       {
         position: {
           x: 0.5,
@@ -36,9 +37,8 @@ class RenderingOrderController extends Controller {
           z: 0,
         },
         color: 0x00ff00,
-        order: 1
       });
-    this.addView(threeJSScene, RectangleView,
+    this.addView(scene, RectangleView,
       {
         position: {
           x: 0.75,
@@ -46,7 +46,6 @@ class RenderingOrderController extends Controller {
           z: 0,
         },
         color: 0xff0000,
-        order: 2
       });
   }
 
