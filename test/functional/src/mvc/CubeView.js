@@ -23,7 +23,7 @@ class CubeView extends View {
     var mesh = new THREE.Mesh(
       new THREE.BoxGeometry(size,size,size),
       new THREE.MeshLambertMaterial({color: this.options.color}));
-    mesh.position.copy(this.options.position);
+    this.sceneObject.position.copy(this.options.position);
     this.sceneObject.add(mesh);
   }
 
