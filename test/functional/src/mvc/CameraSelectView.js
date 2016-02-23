@@ -13,6 +13,8 @@ class CameraSelectView extends tripdom.View {
       <input type="button" value="y+"><input type="button" value="y-"><br>
       <input type="button" value="z+"><input type="button" value="z-"><br>
       <input type="button" value="zoom to extents"><br>
+      <input type="button" value="zoom to layer 1"><br>
+      <input type="button" value="zoom to green"><br>
     `;
     this.toHtml(template, {});
   }
@@ -27,6 +29,8 @@ class CameraSelectView extends tripdom.View {
       'click [value="z+"]': 'z+',
       'click [value="z-"]': 'z-',
       'click [value="zoom to extents"]': 'zoomToExtents',
+      'click [value="zoom to layer 1"]': 'zoomToLayer1',
+      'click [value="zoom to green"]': 'zoomToGreenCube',
     };
   }
 
