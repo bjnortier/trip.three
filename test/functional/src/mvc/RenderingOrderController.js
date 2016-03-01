@@ -1,3 +1,5 @@
+'use strict';
+
 const trip = require('trip.core');
 const $ = require('trip.dom').$;
 const Controller = trip.Controller;

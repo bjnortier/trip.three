@@ -1,4 +1,6 @@
-var tripcore = require('trip.core');
+'use strict';
+
+const tripcore = require('trip.core');
 
 class EventCaptureModel extends tripcore.Model {
 

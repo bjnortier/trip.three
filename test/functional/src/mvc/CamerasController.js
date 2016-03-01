@@ -1,3 +1,5 @@
+'use strict';
+
 const tripcore = require('trip.core');
 const tripdom = require('trip.dom');
 const $ = tripdom.$;

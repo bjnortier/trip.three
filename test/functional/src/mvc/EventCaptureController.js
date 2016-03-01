@@ -1,9 +1,10 @@
+'use strict';
+
 const tripcore = require('trip.core');
 const tripdom = require('trip.dom');
 const $ = tripdom.$;
 
 const lib = require('../../../..');
-// const AxesView = trip.AxesView;
 
 const EventCaptureModel = require('./EventCaptureModel');
 const EventCaptureView = require('./EventCaptureView');
@@ -32,7 +33,6 @@ class EventCaptureController extends tripcore.Controller {
       position: {x: 0.6, y: 0, z: 0},
       size: 0.2
     });
-    // this.addView(threeJSScene, AxesView);
   }
 
   threeJSViewClick(event, view, data) {
