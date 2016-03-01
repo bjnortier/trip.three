@@ -1,4 +1,6 @@
-var tripdom = require('trip.dom');
+'use strict';
+
+const tripdom = require('trip.dom');
 
 class EventCaptureView extends tripdom.View {
 
