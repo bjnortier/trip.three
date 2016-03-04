@@ -1,6 +1,7 @@
 module.exports = {
   entry: {
     'events.test': "./test/functional/src/events.test.js",
+    'cplane.test': "./test/functional/src/cplane.test.js",
     'cameras.test': "./test/functional/src/cameras.test.js",
     'annotations.test': "./test/functional/src/annotations.test.js",
     'renderingorder.test': "./test/functional/src/renderingorder.test.js",
