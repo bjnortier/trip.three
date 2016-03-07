@@ -18,3 +18,12 @@
   top: 20px;
   left: 20px;
 }
+
+.coordinate td {
+  display: inline-block;
+  min-width: 20px;
+}
+
+.coordinate td.label {
+  padding: 0 5px;
+}

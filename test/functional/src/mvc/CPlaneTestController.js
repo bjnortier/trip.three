@@ -28,8 +28,10 @@ class CPlaneTestController extends tripcore.Controller {
       threeJSScene,
       new tripdom.Scene($('#cplane-controls')));
     ctrl.on('mousemove', (event, position) => {
-      console.log(position);
-      this.model.setCPlaneMouseMove(position);
+      this.model.setMouseMove(position);
+    });
+    ctrl.on('click', (event, position) => {
+      this.model.setClick(position);
     });
 
     this.addView(threeJSScene, CubeView, {
@@ -42,8 +44,12 @@ class CPlaneTestController extends tripcore.Controller {
       size: 0.2
     });
     this.addView(valuesDOMScene, CoordinatesDOMView, {
-      label: 'CPlane mousemove',
-      field: 'cplaneMouseMove',
+      label: 'mousemove',
+      field: 'mouseMove',
+    });
+    this.addView(valuesDOMScene, CoordinatesDOMView, {
+      label: 'click',
+      field: 'click',
     });
   }
 

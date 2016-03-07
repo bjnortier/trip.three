@@ -6,17 +6,23 @@ const Text = tripdom.Text;
 class CoordinatesDOMView extends tripdom.View {
 
   constructor(model, scene, options) {
+    options = options || {};
+    options.class = 'coordinate';
+    options.tag = 'tr';
     super(model, scene, options);
+    this.label = options.label;
     this.field = options.field;
   }
 
   render() {
     let template = `
-      <div class="x">{{{x}}}</div>
-      <div class="y">{{{y}}}</div>
-      <div class="z">{{{z}}}</div>
+      <td class="label">{{label}}</td>
+      <td class="x">{{{x}}}</td>
+      <td class="y">{{{y}}}</td>
+      <td class="z">{{{z}}}</td>
       `;
     let view = {
+      label: this.label,
       x: new Text(this.model, this.field + 'X'),
       y: new Text(this.model, this.field + 'Y'),
       z: new Text(this.model, this.field + 'Z'),

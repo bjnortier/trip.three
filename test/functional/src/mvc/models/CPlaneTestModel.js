@@ -6,12 +6,25 @@ class CPlaneTestModel extends tripcore.Model {
 
   constructor() {
     super();
+    this.mouseMoveX = '';
+    this.mouseMoveY = '';
+    this.mouseMoveZ = '';
+    this.clickX = '';
+    this.clickY = '';
+    this.clickZ = '';
   }
 
-  setCPlaneMouseMove(coordinate) {
-    this.cplaneMouseMoveX = coordinate.x;
-    this.cplaneMouseMoveY = coordinate.y;
-    this.cplaneMouseMoveZ = coordinate.z;
+  setMouseMove(coordinate) {
+    this.mouseMoveX = coordinate.x;
+    this.mouseMoveY = coordinate.y;
+    this.mouseMoveZ = coordinate.z;
+    this.emitChange();
+  }
+
+  setClick(coordinate) {
+    this.clickX = coordinate.x;
+    this.clickY = coordinate.y;
+    this.clickZ = coordinate.z;
     this.emitChange();
   }
 
