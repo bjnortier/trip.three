@@ -7,9 +7,9 @@ const $ = tripdom.$;
 const lib = require('../../../..');
 const Scene = lib.Scene;
 
-const AxesView = require('./AxesView');
-const CubeView = require('./CubeView');
-const CornerAnnotationView = require('./CornerAnnotationView');
+const AxesView = require('./views/AxesView');
+const CubeView = require('./views/CubeView');
+const CornerAnnotationView = require('./views/CornerAnnotationView');
 
 class AnnotationsController extends trip.Controller {
 

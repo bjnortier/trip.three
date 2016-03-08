@@ -6,9 +6,9 @@ const $ = tripdom.$;
 
 const lib = require('../../../..');
 
-const EventCaptureModel = require('./EventCaptureModel');
-const EventCaptureView = require('./EventCaptureView');
-const CubeView = require('./CubeView');
+const EventCaptureModel = require('./models/EventCaptureModel');
+const EventCaptureView = require('./views/EventCaptureView');
+const CubeView = require('./views/CubeView');
 
 class EventCaptureController extends tripcore.Controller {
 

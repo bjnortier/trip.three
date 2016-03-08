@@ -8,7 +8,7 @@ const Model = trip.Model;
 const lib = require('../../../..');
 const Scene = lib.Scene;
 
-const RectangleView = require('./RectangleView');
+const RectangleView = require('./views/RectangleView');
 
 class RenderingOrderController extends Controller {
 
