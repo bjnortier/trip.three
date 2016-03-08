@@ -18,6 +18,8 @@ class CubeView extends View {
     options.size = (options.size === undefined) ?
       1 : options.size;
     this.options = options;
+
+
   }
 
   render() {
@@ -27,6 +29,19 @@ class CubeView extends View {
       new THREE.MeshLambertMaterial({color: this.options.color}));
     this.sceneObject.position.copy(this.options.position);
     this.sceneObject.add(mesh);
+
+    this.vertices = [
+      new THREE.Vector3(-size/2, -size/2, -size/2),
+      new THREE.Vector3(size/2, -size/2, -size/2),
+      new THREE.Vector3(-size/2, size/2, -size/2),
+      new THREE.Vector3(size/2, size/2, -size/2),
+      new THREE.Vector3(-size/2, -size/2, size/2),
+      new THREE.Vector3(size/2, -size/2, size/2),
+      new THREE.Vector3(-size/2, size/2, size/2),
+      new THREE.Vector3(size/2, size/2, size/2),
+    ].map((p) => {
+      return new THREE.Vector3().addVectors(p, this.sceneObject.position);
+    });
   }
 
 }

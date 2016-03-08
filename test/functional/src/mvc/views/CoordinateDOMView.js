@@ -3,7 +3,7 @@
 const tripdom = require('trip.dom');
 const Text = tripdom.Text;
 
-class CoordinatesDOMView extends tripdom.View {
+class CoordinateDOMView extends tripdom.View {
 
   constructor(model, scene, options) {
     options = options || {};
@@ -31,9 +31,9 @@ class CoordinatesDOMView extends tripdom.View {
   }
 
   update() {
-
+    // do nothing
   }
 
 }
 
-module.exports = CoordinatesDOMView;
+module.exports = CoordinateDOMView;

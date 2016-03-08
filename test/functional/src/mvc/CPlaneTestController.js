@@ -8,7 +8,8 @@ const lib = require('../../../..');
 
 const CPlaneTestModel = require('./models/CPlaneTestModel');
 const CubeView = require('./CubeView');
-const CoordinatesDOMView = require('./views/CoordinatesDOMView');
+const CoordinateDOMView = require('./views/CoordinateDOMView');
+const Coordinate3View = require('./views/Coordinate3View');
 
 class CPlaneTestController extends tripcore.Controller {
 
@@ -43,12 +44,21 @@ class CPlaneTestController extends tripcore.Controller {
       position: {x: 0.6, y: 0, z: 0},
       size: 0.2
     });
-    this.addView(valuesDOMScene, CoordinatesDOMView, {
+
+    this.addView(valuesDOMScene, CoordinateDOMView, {
       label: 'mousemove',
       field: 'mouseMove',
     });
-    this.addView(valuesDOMScene, CoordinatesDOMView, {
+    this.addView(valuesDOMScene, CoordinateDOMView, {
       label: 'click',
+      field: 'click',
+    });
+    this.addView(threeJSScene, Coordinate3View, {
+      color: 0xff0000,
+      field: 'mouseMove',
+    });
+    this.addView(threeJSScene, Coordinate3View, {
+      color: 0x00ff00,
       field: 'click',
     });
   }
