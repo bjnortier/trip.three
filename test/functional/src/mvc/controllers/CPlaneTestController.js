@@ -17,11 +17,11 @@ class CPlaneTestController extends tripcore.Controller {
   constructor() {
     super(new CPlaneTestModel());
 
-    var domScene = new tripdom.Scene($('#cameras'));
+    const domScene = new tripdom.Scene($('#cameras'));
     this.addView(domScene, CameraSelectView);
 
-    let valuesDOMScene = new tripdom.Scene($('#values'));
-    let threeJSScene = new lib.Scene($('#viewport'), {
+    const valuesDOMScene = new tripdom.Scene($('#values'));
+    const threeJSScene = new lib.Scene($('#viewport'), {
       distance: 5,
       elevation: Math.PI/4,
       azimuth: -Math.PI/4,
@@ -31,9 +31,13 @@ class CPlaneTestController extends tripcore.Controller {
     });
     this.scene = threeJSScene;
 
-    let ctrl = new lib.CPlaneController(
+    const viewFilterForSurfaceSnap = (view) => {
+      return view.layer === 0;
+    };
+    const ctrl = new lib.CPlaneController(
       threeJSScene,
-      new tripdom.Scene($('#cplane-controls')));
+      new tripdom.Scene($('#cplane-controls')),
+      viewFilterForSurfaceSnap);
     ctrl.on('mousemove', (event, position) => {
       this.model.setMouseMove(position);
     });

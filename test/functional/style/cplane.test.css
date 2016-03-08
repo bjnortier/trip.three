@@ -30,10 +30,20 @@
 }
 
 .coordinate td {
-  display: inline-block;
   min-width: 20px;
+  padding: 2px;
 }
 
 .coordinate td.label {
   padding: 0 5px;
+}
+
+.coordinate td.x {
+  color: #0000ff;
+}
+.coordinate td.y {
+  color: #009900;
+}
+.coordinate td.z {
+  color: #ff0000;
 }
