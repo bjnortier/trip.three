@@ -7,9 +7,10 @@ const View = lib.View;
 class CubeView extends View {
 
   constructor(model, scene, options) {
+    options = options || {};
+    options.layer = 1;
     super(model, scene, options);
 
-    options = options || {};
     this.label = options.label;
     this.color = options.color;
     this.field = options.field;

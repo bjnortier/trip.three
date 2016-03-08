@@ -33,15 +33,30 @@ class CubeView extends View {
     this.vertices = [
       new THREE.Vector3(-size/2, -size/2, -size/2),
       new THREE.Vector3(size/2, -size/2, -size/2),
-      new THREE.Vector3(-size/2, size/2, -size/2),
       new THREE.Vector3(size/2, size/2, -size/2),
+      new THREE.Vector3(-size/2, size/2, -size/2),
       new THREE.Vector3(-size/2, -size/2, size/2),
       new THREE.Vector3(size/2, -size/2, size/2),
-      new THREE.Vector3(-size/2, size/2, size/2),
       new THREE.Vector3(size/2, size/2, size/2),
+      new THREE.Vector3(-size/2, size/2, size/2),
     ].map((p) => {
       return new THREE.Vector3().addVectors(p, this.sceneObject.position);
     });
+
+    this.edges = [
+      [this.vertices[0], this.vertices[1]],
+      [this.vertices[1], this.vertices[2]],
+      [this.vertices[2], this.vertices[3]],
+      [this.vertices[3], this.vertices[0]],
+      [this.vertices[4], this.vertices[5]],
+      [this.vertices[5], this.vertices[6]],
+      [this.vertices[6], this.vertices[7]],
+      [this.vertices[7], this.vertices[4]],
+      [this.vertices[0], this.vertices[4]],
+      [this.vertices[1], this.vertices[5]],
+      [this.vertices[2], this.vertices[6]],
+      [this.vertices[3], this.vertices[7]],
+    ];
   }
 
 }

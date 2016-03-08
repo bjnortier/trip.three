@@ -23,6 +23,7 @@ class CPlaneTestController extends tripcore.Controller {
       azimuth: -Math.PI/4,
       near: 0.1,
       far: 100,
+      layers: 2,
     });
 
     let ctrl = new lib.CPlaneController(
