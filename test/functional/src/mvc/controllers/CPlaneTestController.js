@@ -4,13 +4,13 @@ const tripcore = require('trip.core');
 const tripdom = require('trip.dom');
 const $ = tripdom.$;
 
-const lib = require('../../../..');
+const lib = require('../../../../..');
 
-const CPlaneTestModel = require('./models/CPlaneTestModel');
-const CubeView = require('./views/CubeView');
-const CoordinateDOMView = require('./views/CoordinateDOMView');
-const Coordinate3View = require('./views/Coordinate3View');
-const CameraSelectView = require('./views/CameraSelectView');
+const CPlaneTestModel = require('../models/CPlaneTestModel');
+const CubeView = require('../views/CubeView');
+const CoordinateDOMView = require('../views/CoordinateDOMView');
+const Coordinate3View = require('../views/Coordinate3View');
+const CameraSelectView = require('../views/CameraSelectView');
 
 class CPlaneTestController extends tripcore.Controller {
 

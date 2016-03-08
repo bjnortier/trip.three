@@ -5,10 +5,10 @@ const $ = require('trip.dom').$;
 const Controller = trip.Controller;
 const Model = trip.Model;
 
-const lib = require('../../../..');
+const lib = require('../../../../..');
 const Scene = lib.Scene;
 
-const RectangleView = require('./views/RectangleView');
+const RectangleView = require('../views/RectangleView');
 
 class RenderingOrderController extends Controller {
 

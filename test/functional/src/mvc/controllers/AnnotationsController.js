@@ -4,12 +4,12 @@ const trip = require('trip.core');
 const tripdom = require('trip.dom');
 const $ = tripdom.$;
 
-const lib = require('../../../..');
+const lib = require('../../../../..');
 const Scene = lib.Scene;
 
-const AxesView = require('./views/AxesView');
-const CubeView = require('./views/CubeView');
-const CornerAnnotationView = require('./views/CornerAnnotationView');
+const AxesView = require('../views/AxesView');
+const CubeView = require('../views/CubeView');
+const CornerAnnotationView = require('../views/CornerAnnotationView');
 
 class AnnotationsController extends trip.Controller {
 
