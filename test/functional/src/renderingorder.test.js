@@ -1,2 +1,2 @@
 'use strict';
-new (require('./mvc/RenderingOrderController'))();
+new (require('./mvc/controllers/RenderingOrderController'))();
