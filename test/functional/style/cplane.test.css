@@ -13,10 +13,20 @@
   bottom: 20px;
 }
 
+#cameras {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+#cameras input[type="button"] {
+  font-size: 20px;
+  margin: 5px;
+}
+
 #values {
   position: absolute;
   top: 20px;
-  left: 20px;
+  right: 20px;
 }
 
 .coordinate td {

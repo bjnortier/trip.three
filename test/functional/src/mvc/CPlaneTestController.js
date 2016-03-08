@@ -7,14 +7,18 @@ const $ = tripdom.$;
 const lib = require('../../../..');
 
 const CPlaneTestModel = require('./models/CPlaneTestModel');
-const CubeView = require('./CubeView');
+const CubeView = require('./views/CubeView');
 const CoordinateDOMView = require('./views/CoordinateDOMView');
 const Coordinate3View = require('./views/Coordinate3View');
+const CameraSelectView = require('./views/CameraSelectView');
 
 class CPlaneTestController extends tripcore.Controller {
 
   constructor() {
     super(new CPlaneTestModel());
+
+    var domScene = new tripdom.Scene($('#cameras'));
+    this.addView(domScene, CameraSelectView);
 
     let valuesDOMScene = new tripdom.Scene($('#values'));
     let threeJSScene = new lib.Scene($('#viewport'), {
@@ -25,6 +29,7 @@ class CPlaneTestController extends tripcore.Controller {
       far: 100,
       layers: 2,
     });
+    this.scene = threeJSScene;
 
     let ctrl = new lib.CPlaneController(
       threeJSScene,
@@ -62,6 +67,42 @@ class CPlaneTestController extends tripcore.Controller {
       color: 0x00ff00,
       field: 'click',
     });
+  }
+
+  perspective() {
+    this.scene.setPerspective();
+    this.model.mode = 'perspective';
+    this.model.orthoModel = null;
+  }
+
+  'x+'() {
+    this.scene.setOrthoXPos();
+    this.model.mode = 'orthographic';
+  }
+
+  'x-'() {
+    this.scene.setOrthoXNeg();
+    this.model.mode = 'orthographic';
+  }
+
+  'y+'() {
+    this.scene.setOrthoYPos();
+    this.model.mode = 'orthographic';
+  }
+
+  'y-'() {
+    this.scene.setOrthoYNeg();
+    this.model.mode = 'orthographic';
+  }
+
+  'z+'() {
+    this.scene.setOrthoZPos();
+    this.model.mode = 'orthographic';
+  }
+
+  'z-'() {
+    this.scene.setOrthoZNeg();
+    this.model.mode = 'orthographic';
   }
 
 }
