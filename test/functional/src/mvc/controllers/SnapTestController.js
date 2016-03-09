@@ -37,8 +37,11 @@ class CPlaneTestController extends tripcore.Controller {
     };
     const ctrl = new SnapController(
       threeJSScene,
-      new tripdom.Scene($('#cplane-controls')),
-      viewFilterForSurfaceSnap);
+      new tripdom.Scene($('#snap-controls')),
+      {
+        viewFilterForSurfaceSnap: viewFilterForSurfaceSnap,
+        extents: 30,
+      });
     ctrl.on('mousemove', (event, position) => {
       this.model.setMouseMove(position);
     });
