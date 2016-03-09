@@ -1,2 +1,2 @@
 'use strict';
-new (require('./mvc/AnnotationsController'))();
+new (require('./mvc/controllers/AnnotationsController'))();

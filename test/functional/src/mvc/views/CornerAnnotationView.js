@@ -1,6 +1,6 @@
 'use strict';
 
-const lib = require('../../../..');
+const lib = require('../../../../..');
 const AnnotationView = lib.AnnotationView;
 
 class CornerAnnotationView extends AnnotationView {
