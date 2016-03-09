@@ -5,8 +5,9 @@ const tripdom = require('trip.dom');
 const $ = tripdom.$;
 
 const lib = require('../../../../..');
+const SnapController = lib.SnapController;
 
-const CPlaneTestModel = require('../models/CPlaneTestModel');
+const SnapTestModel = require('../models/SnapTestModel');
 const CubeView = require('../views/CubeView');
 const CoordinateDOMView = require('../views/CoordinateDOMView');
 const Coordinate3View = require('../views/Coordinate3View');
@@ -15,7 +16,7 @@ const CameraSelectView = require('../views/CameraSelectView');
 class CPlaneTestController extends tripcore.Controller {
 
   constructor() {
-    super(new CPlaneTestModel());
+    super(new SnapTestModel());
 
     const domScene = new tripdom.Scene($('#cameras'));
     this.addView(domScene, CameraSelectView);
@@ -34,7 +35,7 @@ class CPlaneTestController extends tripcore.Controller {
     const viewFilterForSurfaceSnap = (view) => {
       return view.layer === 0;
     };
-    const ctrl = new lib.CPlaneController(
+    const ctrl = new SnapController(
       threeJSScene,
       new tripdom.Scene($('#cplane-controls')),
       viewFilterForSurfaceSnap);
