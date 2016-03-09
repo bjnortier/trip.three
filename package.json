@@ -43,6 +43,6 @@
     "event-emitter": "^0.3.4",
     "three": "^0.74.0",
     "trip.core": "^0.5.1",
-    "trip.dom": "^0.2.0"
+    "trip.dom": "^0.2.2"
   }
 }

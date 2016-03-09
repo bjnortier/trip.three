@@ -1,3 +1,2 @@
 'use strict';
-var CamerasController = require('./mvc/CamerasController');
-new CamerasController();
+new (require('./mvc/controllers/CamerasController'))();

@@ -4,11 +4,11 @@ const tripcore = require('trip.core');
 const tripdom = require('trip.dom');
 const $ = tripdom.$;
 
-const lib = require('../../../..');
+const lib = require('../../../../..');
 
-var CubeView = require('./CubeView');
-var AxesView = require('./AxesView');
-var CameraSelectView = require('./CameraSelectView');
+var CubeView = require('../views/CubeView');
+var AxesView = require('../views/AxesView');
+var CameraSelectView = require('../views/CameraSelectView');
 
 class CamerasController extends tripcore.Controller {
 
@@ -16,7 +16,7 @@ class CamerasController extends tripcore.Controller {
     super(new tripcore.Model());
 
     var domScene = new tripdom.Scene($('#dom'));
-    this.addView(domScene, CameraSelectView);
+    this.addView(domScene, CameraSelectView, {showZoom: true});
 
     var options = {
       distance: 10,
