@@ -23,6 +23,7 @@ class CamerasController extends tripcore.Controller {
       azimuth: Math.PI/4,
       elevation: 1.08,
       layers: 2,
+      clear: false,
     };
     var scene = new lib.Scene($('#viewport'), options);
     this.addView(scene, CubeView, {
