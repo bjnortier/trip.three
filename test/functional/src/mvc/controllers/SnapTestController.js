@@ -13,7 +13,7 @@ const CoordinateDOMView = require('../views/CoordinateDOMView');
 const Coordinate3View = require('../views/Coordinate3View');
 const CameraSelectView = require('../views/CameraSelectView');
 
-class CPlaneTestController extends tripcore.Controller {
+class SnapTestController extends tripcore.Controller {
 
   constructor() {
     super(new SnapTestModel());
@@ -115,4 +115,4 @@ class CPlaneTestController extends tripcore.Controller {
 
 }
 
-module.exports = CPlaneTestController;
+module.exports = SnapTestController;
