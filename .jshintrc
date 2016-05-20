@@ -27,6 +27,7 @@
     "Worker": false,
     "postMessage": false,
     "onmessage": true,
-    "atob": false
+    "atob": false,
+    "navigator": false
   }
 }
