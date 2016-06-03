@@ -80,32 +80,26 @@ class SnapTestController extends tripcore.Controller {
   perspective() {
     this.scene.setPerspective();
     this.model.mode = 'perspective';
-    this.model.orthoModel = null;
   }
 
   'x+'() {
     this.scene.setOrthoXPos();
-    this.model.mode = 'orthographic';
   }
 
   'x-'() {
     this.scene.setOrthoXNeg();
-    this.model.mode = 'orthographic';
   }
 
   'y+'() {
     this.scene.setOrthoYPos();
-    this.model.mode = 'orthographic';
   }
 
   'y-'() {
     this.scene.setOrthoYNeg();
-    this.model.mode = 'orthographic';
   }
 
   'z+'() {
     this.scene.setOrthoZPos();
-    this.model.mode = 'orthographic';
   }
 
   'z-'() {
