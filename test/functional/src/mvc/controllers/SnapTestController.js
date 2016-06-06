@@ -35,17 +35,20 @@ class SnapTestController extends tripcore.Controller {
     const viewFilterForSurfaceSnap = (view) => {
       return view.layer === 0;
     };
-    const ctrl = new SnapController(
+    const snapCtrl = new SnapController(
       threeJSScene,
       new tripdom.Scene($('#snap-controls')),
       {
         viewFilterForSurfaceSnap: viewFilterForSurfaceSnap,
         extents: 30,
       });
-    ctrl.on('mousemove', (event, position) => {
+    snapCtrl.setXY();
+
+    this.snapCtrl = snapCtrl;
+    snapCtrl.on('mousemove', (event, position) => {
       this.model.setMouseMove(position);
     });
-    ctrl.on('click', (event, position) => {
+    snapCtrl.on('click', (event, position) => {
       this.model.setClick(position);
     });
 
@@ -79,32 +82,37 @@ class SnapTestController extends tripcore.Controller {
 
   perspective() {
     this.scene.setPerspective();
-    this.model.mode = 'perspective';
+    this.snapCtrl.setXY();
   }
 
   'x+'() {
     this.scene.setOrthoXPos();
+    this.snapCtrl.setYZ();
   }
 
   'x-'() {
     this.scene.setOrthoXNeg();
+    this.snapCtrl.setYZ();
   }
 
   'y+'() {
     this.scene.setOrthoYPos();
+    this.snapCtrl.setZX();
   }
 
   'y-'() {
     this.scene.setOrthoYNeg();
+    this.snapCtrl.setZX();
   }
 
   'z+'() {
     this.scene.setOrthoZPos();
+    this.snapCtrl.setXY();
   }
 
   'z-'() {
     this.scene.setOrthoZNeg();
-    this.model.mode = 'orthographic';
+    this.snapCtrl.setXY();
   }
 
 }
