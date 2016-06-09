@@ -18,11 +18,11 @@ class SnapTestController extends tripcore.Controller {
   constructor() {
     super(new SnapTestModel());
 
-    const domScene = new tripdom.Scene($('#cameras'));
+    const domScene = new tripdom.Scene('#cameras');
     this.addView(domScene, CameraSelectView);
 
-    const valuesDOMScene = new tripdom.Scene($('#values'));
-    const threeJSScene = new lib.Scene($('#viewport'), {
+    const valuesDOMScene = new tripdom.Scene('#values');
+    const threeJSScene = new lib.Scene('#viewport', {
       distance: 5,
       elevation: Math.PI/4,
       azimuth: -Math.PI/4,

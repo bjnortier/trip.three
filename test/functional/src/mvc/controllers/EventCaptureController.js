@@ -2,7 +2,6 @@
 
 const tripcore = require('trip.core');
 const tripdom = require('trip.dom');
-const $ = tripdom.$;
 
 const lib = require('../../../../..');
 
@@ -15,7 +14,7 @@ class EventCaptureController extends tripcore.Controller {
   constructor() {
     super(new EventCaptureModel());
 
-    var domScene = new tripdom.Scene($('#dom'));
+    var domScene = new tripdom.Scene('#dom');
     this.addView(domScene, EventCaptureView);
 
     var options = {
@@ -23,7 +22,7 @@ class EventCaptureController extends tripcore.Controller {
       elevation: Math.PI/4,
       azimuth: -Math.PI/4,
     };
-    var threeJSScene = new lib.Scene($('#viewport'), options);
+    var threeJSScene = new lib.Scene('#viewport', options);
     this.addView(threeJSScene, CubeView, {
       label: 'c1',
     });
