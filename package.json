@@ -1,6 +1,6 @@
 {
   "name": "trip.three",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Three.js addon for Trip",
   "main": "lib/index.js",
   "directories": {
@@ -43,6 +43,6 @@
     "event-emitter": "^0.3.4",
     "three": "^0.74.0",
     "trip.core": "^0.5.3",
-    "trip.dom": "^0.3.0"
+    "trip.dom": "^0.3.1"
   }
 }
