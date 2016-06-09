@@ -20,7 +20,7 @@ class RenderingOrderController extends Controller {
       azimuth: Math.PI/4,
       elevation: 1.08,
     };
-    var scene = new Scene($('#viewport'), options);
+    var scene = new Scene('#viewport', options);
 
     this.addView(scene, RectangleView,
       {

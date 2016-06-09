@@ -2,7 +2,6 @@
 
 const trip = require('trip.core');
 const tripdom = require('trip.dom');
-const $ = tripdom.$;
 
 const lib = require('../../../../..');
 const Scene = lib.Scene;
@@ -21,7 +20,7 @@ class AnnotationsController extends trip.Controller {
       elevation: Math.PI/4,
       azimuth: -Math.PI/4,
     };
-    var scene = new Scene($('#viewport'), options);
+    var scene = new Scene('#viewport', options);
 
     this.addView(scene, CubeView, {position: {x: 0.5, y: 0, z: 1.5}});
     this.addView(scene, CornerAnnotationView, {x: 0.0, y: 0.0, z: 0.0});

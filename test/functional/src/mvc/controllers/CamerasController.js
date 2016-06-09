@@ -15,7 +15,7 @@ class CamerasController extends tripcore.Controller {
   constructor() {
     super(new tripcore.Model());
 
-    var domScene = new tripdom.Scene($('#dom'));
+    var domScene = new tripdom.Scene('#dom');
     this.addView(domScene, CameraSelectView, {showZoom: true});
 
     var options = {
@@ -25,7 +25,7 @@ class CamerasController extends tripcore.Controller {
       layers: 2,
       clear: false,
     };
-    var scene = new lib.Scene($('#viewport'), options);
+    var scene = new lib.Scene('#viewport', options);
     this.addView(scene, CubeView, {
       color: 0xff0000,
       position: {x: 0, y: 0, z: 2.5},

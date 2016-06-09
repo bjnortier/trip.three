@@ -15,6 +15,7 @@ class CoordinateDOMView extends tripdom.View {
   }
 
   render() {
+    super.render();
     let template = `
       <td class="label">{{label}}</td>
       <td class="x">{{{x}}}</td>

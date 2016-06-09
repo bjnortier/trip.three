@@ -11,6 +11,7 @@ class CameraSelectView extends tripdom.View {
   }
 
   render() {
+    super.render();
     let template = `
       <input type="button" value="perspective"><br>
       <input type="button" value="x+"><input type="button" value="x-"><br>
