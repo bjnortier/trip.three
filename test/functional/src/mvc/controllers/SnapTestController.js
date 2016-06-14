@@ -12,14 +12,16 @@ const CubeView = require('../views/CubeView');
 const CoordinateDOMView = require('../views/CoordinateDOMView');
 const Coordinate3View = require('../views/Coordinate3View');
 const CameraSelectView = require('../views/CameraSelectView');
+const CPlaneSelectView = require('../views/CPlaneSelectView');
 
 class SnapTestController extends tripcore.Controller {
 
   constructor() {
     super(new SnapTestModel());
 
-    const domScene = new tripdom.Scene('#cameras');
+    const domScene = new tripdom.Scene('#select');
     this.addView(domScene, CameraSelectView);
+    this.addView(domScene, CPlaneSelectView);
 
     const valuesDOMScene = new tripdom.Scene('#values');
     const threeJSScene = new lib.Scene('#viewport', {
@@ -115,6 +117,59 @@ class SnapTestController extends tripcore.Controller {
     this.snapCtrl.setXY();
   }
 
+  'XY'() {
+    this.snapCtrl.setXY();
+  }
+
+  'XY+1'() {
+    this.snapCtrl.model.updateOriginAndOrientation({
+      origin: {
+        x: 0, y: 0, z: 1,
+      },
+      normal: {
+        x: 0, y: 0, z: 1,
+      },
+      localX: {
+        x: 1, y: 0, z: 0,
+      }
+    });
+  }
+
+  'YZ'() {
+    this.snapCtrl.setYZ();
+  }
+
+  'YZ-5'() {
+    this.snapCtrl.model.updateOriginAndOrientation({
+      origin: {
+        x: -5, y: 0, z: 0,
+      },
+      normal: {
+        x: 1, y: 0, z: 0,
+      },
+      localX: {
+        x: 0, y: 1, z: 0,
+      }
+    });
+  }
+
+  'ZX'() {
+    this.snapCtrl.setZX();
+  }
+
+  'SKEW'() {
+    this.snapCtrl.model.updateOriginAndOrientation({
+      origin: {
+        x: 0, y: 0, z: 5,
+      },
+      normal: {
+        x: 1/Math.sqrt(2), y: 1/Math.sqrt(2), z: 0,
+      },
+      localX: {
+        x: 0, y: 0, z: 1,
+      }
+    });
+  }
 }
 
 module.exports = SnapTestController;
