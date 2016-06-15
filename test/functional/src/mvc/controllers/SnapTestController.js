@@ -160,7 +160,7 @@ class SnapTestController extends tripcore.Controller {
   'SKEW'() {
     this.snapCtrl.model.updateOriginAndOrientation({
       origin: {
-        x: 0, y: 0, z: 5,
+        x: 1, y: 0, z: 5,
       },
       normal: {
         x: 1/Math.sqrt(2), y: 1/Math.sqrt(2), z: 0,
