@@ -42,7 +42,7 @@
   "dependencies": {
     "event-emitter": "^0.3.4",
     "three": "^0.74.0",
-    "trip.core": "^0.5.3",
-    "trip.dom": "^0.3.1"
+    "trip.core": "^0.5.4",
+    "trip.dom": "^0.3.3"
   }
 }
