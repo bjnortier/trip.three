@@ -37,10 +37,14 @@ class SnapTestController extends tripcore.Controller {
     const viewFilterForSurfaceSnap = (view) => {
       return view.layer === 0;
     };
+    const viewFilterForEdgeSnap = (view) => {
+      return view.layer === 0;
+    };
     const snapCtrl = new SnapController(
       threeJSScene,
       new tripdom.Scene($('#snap-controls')),
       {
+        viewFilterForEdgeSnap: viewFilterForEdgeSnap,
         viewFilterForSurfaceSnap: viewFilterForSurfaceSnap,
         extents: 30,
       });
