@@ -1,6 +1,6 @@
 {
   "name": "trip.three",
-  "version": "0.4.5",
+  "version": "0.5.0",
   "description": "Three.js addon for Trip",
   "main": "lib/index.js",
   "directories": {
