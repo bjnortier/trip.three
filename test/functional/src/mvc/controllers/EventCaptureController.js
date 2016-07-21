@@ -35,19 +35,19 @@ class EventCaptureController extends tripcore.Controller {
   }
 
   threeJSViewClick(event, view, data) {
-    this.model.addEvent('click:' + view.label, event, data);
+    this.model.addEvent('click:' + view.label, event, data.position);
   }
 
   threeJSViewMouseEnter(event, view, data) {
-    this.model.addEvent('enter:' + view.label, event, data);
+    this.model.addEvent('enter:' + view.label, event, data.position);
   }
 
   threeJSViewMouseLeave(event, view, data) {
-    this.model.addEvent('leave:' + view.label, event, data);
+    this.model.addEvent('leave:' + view.label, event, data.position);
   }
 
   threeJSViewMouseOver(event, view, data) {
-    this.model.addEvent('over:' + view.label, event, data);
+    this.model.addEvent('over:' + view.label, event, data.position);
   }
 
 }
