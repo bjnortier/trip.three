@@ -1,48 +1,22 @@
 import React from 'react';
+import SnapOption from './SnapOption';
+import GridSize from './GridSize';
 
-const SnapSettings = ({ store, onSnapClick }) => {
+const SnapSettings = ({ store, onSnapClick, onGridSizeChange }) => {
   return (
     <div>
-      <label>
-        <input
-          type='checkbox'
-          onClick={() => {
-            onSnapClick('surface');
-          }}
-          defaultChecked={store.getState().surface}
-        />
-        surface
-      </label>
-      <label>
-        <input
-          type='checkbox'
-          onClick={() => {
-            onSnapClick('edge');
-          }}
-          defaultChecked={store.getState().edge}
-        />
-        edge
-      </label>
-      <label>
-        <input
-          type='checkbox'
-          onClick={() => {
-            onSnapClick('vertex');
-          }}
-          defaultChecked={store.getState().vertex}
-        />
-        vertex
-      </label>
-      <label>
-        <input
-          type='checkbox'
-          onClick={() => {
-            onSnapClick('grid');
-          }}
-          defaultChecked={store.getState().grid}
-        />
-        grid
-      </label>
+      {['surface', 'edge', 'vertex', 'grid'].map((key) => {
+        return (<SnapOption
+          store={store}
+          onSnapClick={onSnapClick}
+          key={key}
+          label={key}
+        />);
+      })}
+      <GridSize
+        store={store}
+        onGridSizeChange={onGridSizeChange}
+      />
     </div>
   );
 };

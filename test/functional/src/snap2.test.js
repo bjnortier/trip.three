@@ -20,11 +20,21 @@ const onSnapClick = (key) => {
   });
 };
 
+const onGridSizeChange = (value) => {
+  console.info('CHANGE_GRID_SIZE', value);
+  store2.dispatch({
+    type: 'CHANGE_GRID_SIZE',
+    value,
+  });
+};
+
 const render2 = () => {
+  console.info(store2.getState());
   render(
     <App2
       store={store2}
       onSnapClick={onSnapClick}
+      onGridSizeChange={onGridSizeChange}
     />,
     document.getElementById('snap-controls-2')
   );
