@@ -1,7 +1,6 @@
 'use strict';
 
 const trip = require('trip.core');
-const tripdom = require('trip.dom');
 
 const lib = require('../../../../..');
 const Scene = lib.Scene;

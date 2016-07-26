@@ -30,7 +30,7 @@ class EventCaptureController extends tripcore.Controller {
       label: 'c2',
       color: 0xff6666,
       position: {x: 0.6, y: 0, z: 0},
-      size: 0.2
+      size: 0.2,
     });
   }
 

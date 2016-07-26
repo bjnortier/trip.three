@@ -30,7 +30,7 @@ class EventCaptureView extends tripdom.View {
       };
     });
     this.toHtml(template, {
-      events: reversedEvents
+      events: reversedEvents,
     });
   }
 
