@@ -11,13 +11,6 @@
   position: absolute;
   right: 20px;
   bottom: 20px;
-}
-
-
-#snap-controls-2 {
-  position: absolute;
-  right: 20px;
-  bottom: 50px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
