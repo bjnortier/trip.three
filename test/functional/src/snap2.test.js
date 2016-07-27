@@ -6,7 +6,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import snap from './reducers/snap';
-import App from './components/App2';
+import App from './components/App';
 
 let store = createStore(snap);
 
