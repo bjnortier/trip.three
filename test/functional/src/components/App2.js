@@ -1,14 +1,10 @@
 import React from 'react';
-import SnapSettings from '../components/SnapSettings';
+import SnapSettings from '../containers/SnapSettings';
 
-const App = ({store, onSnapClick, onGridSizeChange}) => {
-  return (
-    <SnapSettings
-      store={store}
-      onSnapClick={onSnapClick}
-      onGridSizeChange={onGridSizeChange}
-    />
-  );
-};
+const App = () => (
+  <div>
+    <SnapSettings />
+  </div>
+);
 
 export default App;

@@ -1,10 +1,12 @@
 
 const snap = (
   state = {
-    surface: false,
-    edge: false,
-    vertex: false,
-    grid: true,
+    snappables: {
+      surface: false,
+      edge: false,
+      vertex: false,
+      grid: true,
+    },
     gridSize: 0.1,
     gridSizes: [1.0, 0.5, 0.1],
   },
@@ -12,12 +14,15 @@ const snap = (
 ) => {
   switch (action.type) {
   case 'TOGGLE_SNAP': {
-    const toggled = {};
-    toggled[action.key] = !state[action.key];
-    return Object.assign({}, state, toggled);
+    const snappables = Object.assign({}, state.snappables);
+    snappables[action.label] = !snappables[action.label];
+    return {
+      ...state,
+      snappables,
+    };
   }
   case 'CHANGE_GRID_SIZE': {
-    return Object.assign({}, state, {gridSize: parseFloat(action.value, 10)});
+    return Object.assign({}, state, {gridSize: parseFloat(action.size, 10)});
   }
   default:
     if (action.type !== '@@redux/INIT') {

@@ -1,21 +1,21 @@
 import React from 'react';
 
-const GridSize = ({ store, onGridSizeChange }) => {
+const GridSize = ({ sizes, currentSize, enabled, onChange }) => {
   let select;
   return (
     <select name='grid-sizes'
-      disabled={store.getState().grid === false}
+      disabled={!enabled}
       ref={node => select = node}
       onChange={() => {
-        onGridSizeChange(select.value);
+        onChange(select.value);
       }}
     >
-      {store.getState().gridSizes.map((size, i) => {
+      {sizes.map((size, i) => {
         return (
           <option
             key={i}
             value={size}
-            defaultChecked={store.getState().gridSize === size}
+            defaultChecked={currentSize === size}
           >
           {size}
           </option>

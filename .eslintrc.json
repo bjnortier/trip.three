@@ -40,7 +40,7 @@
     ],
     "no-console": [
       "error",
-      {"allow": ["info", "warn", "error"]}
+      {"allow": ["log", "info", "warn", "error"]}
     ],
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error"
