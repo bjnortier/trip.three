@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+const React = require('react');
+const PropTypes = React.PropTypes;
 
 const SnapOption = ({ label, isEnabled, onClick }) => {
   return (

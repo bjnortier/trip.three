@@ -1,25 +1,13 @@
 'use strict';
 
-import { Model } from 'trip.core';
-import { createStore } from 'redux';
+const Model = require('trip.core').Model;
+const createStore = require('redux').createStore;
 
 class SnapModel extends Model {
 
   constructor(options) {
     options = options || {};
     super();
-    this.size = options.size || 1.0;
-    this.sizeOptions = options.sizeOptions || [1.0, 0.5, 0.1];
-    this.extents = options.extents || 10;
-    this.origin = {
-      x: 0, y: 0, z: 0,
-    };
-    this.normal = {
-      x: 0, y: 0, z: 1,
-    };
-    this.localX = {
-      x: 1, y: 0, z: 0,
-    };
 
     const reducer = (
       state = {
@@ -29,8 +17,20 @@ class SnapModel extends Model {
           vertex: options.snapVertex || false,
           grid: options.snapGrid || true,
         },
-        gridSize: options.size || 1.0,
-        gridSizes: options.sizeOptions || [1.0, 0.5, 0.1],
+        grid: {
+          size: options.size || 1.0,
+          sizeOptions: options.sizeOptions || [1.0, 0.5, 0.1],
+          extents: options.extents || 10,
+        },
+        origin: {
+          x: 0, y: 0, z: 0,
+        },
+        normal: {
+          x: 0, y: 0, z: 1,
+        },
+        localX: {
+          x: 1, y: 0, z: 0,
+        },
       },
       action
     ) => {
@@ -45,6 +45,17 @@ class SnapModel extends Model {
       }
       case 'CHANGE_GRID_SIZE': {
         return Object.assign({}, state, {gridSize: parseFloat(action.size, 10)});
+      }
+      case 'CHANGE_ORIGIN_AND_ORIENTATION': {
+        const origin = action.origin;
+        const normal = action.normal;
+        const localX = action.localX;
+        return {
+          ...state,
+          origin,
+          normal,
+          localX,
+        };
       }
       default:
         if (action.type !== '@@redux/INIT') {
@@ -71,21 +82,38 @@ class SnapModel extends Model {
       return this.store.getState().snappables.grid;
     });
 
+    this.__defineGetter__('gridSize', () => {
+      return this.store.getState().grid.size;
+    });
+
+    this.__defineGetter__('extents', () => {
+      return this.store.getState().grid.extents;
+    });
+
+    this.__defineGetter__('origin', () => {
+      return this.store.getState().origin;
+    });
+
+    this.__defineGetter__('normal', () => {
+      return this.store.getState().normal;
+    });
+
+    this.__defineGetter__('localX', () => {
+      return this.store.getState().localX;
+    });
+
     this.unsubscribe = this.store.subscribe(() => {
       this.emitChange();
     });
   }
 
-  update(field, value) {
-    this[field] = value;
-    this.emitChange(field, value);
-  }
-
   updateOriginAndOrientation(props) {
-    this.origin = props.origin;
-    this.normal = props.normal;
-    this.localX = props.localX;
-    this.emitChange();
+    this.store.dispatch({
+      type: 'CHANGE_ORIGIN_AND_ORIENTATION',
+      origin: props.origin,
+      normal: props.normal,
+      localX: props.localX,
+    });
   }
 
   serialize() {

@@ -33,7 +33,7 @@ class CPlane3View extends View {
     if (this.model.snapGrid && !this.hideGrid) {
       const minorGeometry = new THREE.Geometry();
       const minorMaterial = new THREE.LineBasicMaterial({ color: 0xcccccc, linewidth: 1 });
-      const gridSize = this.model.size;
+      const gridSize = this.model.gridSize;
       const n = gridExtents/gridSize;
 
       const localYMin = localY.clone().multiplyScalar(-gridExtents);

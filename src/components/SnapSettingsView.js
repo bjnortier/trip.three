@@ -1,6 +1,6 @@
-import React from 'react';
-import SnapOption from './SnapOption';
-import GridSize from './GridSize';
+const React = require('react');
+const SnapOption = require('./SnapOption');
+const GridSize = require('./GridSize');
 
 const SnapSettings = ({ snappables, grid, onSnapClick, onGridSizeChange }) => {
   return (

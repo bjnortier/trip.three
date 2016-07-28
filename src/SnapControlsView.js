@@ -1,16 +1,16 @@
 'use strict';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+const React = require('react');
+const ReactDOM = require('react-dom');
 const reactRender = ReactDOM.render;
-import { Provider } from 'react-redux';
-import App from './components/App';
+const Provider = require('react-redux').Provider;
+const App = require('./components/App');
 
 const tripdom = require('trip.dom');
 const $ = tripdom.$;
 const DOMView = tripdom.View;
 
-class SnapControlsReactView extends DOMView {
+class SnapControlsView extends DOMView {
 
   constructor(model, scene, options) {
     super(model, scene, options);
@@ -31,4 +31,4 @@ class SnapControlsReactView extends DOMView {
 
 }
 
-module.exports = SnapControlsReactView;
+module.exports = SnapControlsView;

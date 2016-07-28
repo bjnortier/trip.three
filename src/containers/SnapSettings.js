@@ -1,6 +1,7 @@
-import { connect } from 'react-redux';
-import { toggleSnap , changeGridSize } from '../actions';
-import SnapSettingsView from '../components/SnapSettingsView';
+const connect = require('react-redux').connect;
+const actions = require('../actions');
+const { toggleSnap , changeGridSize } = actions;
+const SnapSettingsView = require('../components/SnapSettingsView');
 
 const mapStateToProps = (state) => {
   return {
@@ -11,8 +12,8 @@ const mapStateToProps = (state) => {
       };
     }),
     grid: {
-      sizes: state.gridSizes,
-      currentSize: state.gridSize,
+      sizeOptions: state.grid.sizeOptions,
+      currentSize: state.grid.size,
       enabled: state.snappables.grid,
     },
   };

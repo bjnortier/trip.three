@@ -1,6 +1,6 @@
-import React from 'react';
+const React = require('react');
 
-const GridSize = ({ sizes, currentSize, enabled, onChange }) => {
+const GridSize = ({ sizeOptions, currentSize, enabled, onChange }) => {
   let select;
   return (
     <select name='grid-sizes'
@@ -10,7 +10,7 @@ const GridSize = ({ sizes, currentSize, enabled, onChange }) => {
         onChange(select.value);
       }}
     >
-      {sizes.map((size, i) => {
+      {sizeOptions.map((size, i) => {
         return (
           <option
             key={i}
