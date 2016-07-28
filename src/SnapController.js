@@ -1,8 +1,6 @@
 'use strict';
 
 const Controller = require('trip.core').Controller;
-const tripdom = require('trip.dom');
-const $ = tripdom.$;
 const V3 = require('three').Vector3;
 
 const SnapModel = require('./SnapModel');
@@ -11,7 +9,6 @@ const CPlane3View = require('./CPlane3View');
 
 const toWorldPosition = require('./util/toWorldPosition');
 const toScreenPosition = require('./util/toScreenPosition');
-// const worldPositionToXY = require('./util/worldPositionToXY');
 const worldPositionToPlane = require('./util/worldPositionToPlane');
 const decimalAdjust = require('./util/decimalAdjust');
 const closestPointToEdge = require('./util/closestPointToEdge');
@@ -76,7 +73,7 @@ class SnapController extends Controller {
       },
       localX: {
         x: 1, y: 0, z: 0,
-      }
+      },
     });
   }
 
@@ -90,7 +87,7 @@ class SnapController extends Controller {
       },
       localX: {
         x: 0, y: 1, z: 0,
-      }
+      },
     });
   }
 
@@ -104,28 +101,8 @@ class SnapController extends Controller {
       },
       localX: {
         x: 0, y: 0, z: 1,
-      }
+      },
     });
-  }
-
-  changeSize(event) {
-    this.model.update('size', parseFloat($(event.currentTarget).val(), 10));
-  }
-
-  changeSnapGrid(event) {
-    this.model.update('snapGrid', $(event.currentTarget).is(':checked'));
-  }
-
-  changeSnapVertex(event) {
-    this.model.update('snapVertex', $(event.currentTarget).is(':checked'));
-  }
-
-  changeSnapEdge(event) {
-    this.model.update('snapEdge', $(event.currentTarget).is(':checked'));
-  }
-
-  changeSnapSurface(event) {
-    this.model.update('snapSurface', $(event.currentTarget).is(':checked'));
   }
 
   snap(mouseScreenPos, mouseWorldPos) {
@@ -182,8 +159,10 @@ class SnapController extends Controller {
       const localYComponent =
         planeLocalY.dot(localMinusOrigin);
 
-      const snappedLocalX = decimalAdjust(Math.round(localXComponent/model.size)*model.size, -3);
-      const snappedLocalY = decimalAdjust(Math.round(localYComponent/model.size)*model.size, -3);
+      const snappedLocalX = decimalAdjust(
+        Math.round(localXComponent/model.gridSize)*model.gridSize, -3);
+      const snappedLocalY = decimalAdjust(
+        Math.round(localYComponent/model.gridSize)*model.gridSize, -3);
 
       let snapped = new V3().addVectors(
         planeOrigin,

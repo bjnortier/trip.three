@@ -106,11 +106,11 @@ class ContainerEventGenerator {
 
     // http://www.javascriptkit.com/javatutors/onmousewheel.shtml
     const mouseWheelEvent = (/Firefox/i.test(navigator.userAgent)) ?
-      "DOMMouseScroll" : "mousewheel"; // FF doesn't recognize mousewheel as of FF3.x
+      'DOMMouseScroll' : 'mousewheel'; // FF doesn't recognize mousewheel as of FF3.x
 
     if (document.attachEvent) {
       // if IE (and Opera depending on user setting)
-      document.attachEvent("on" + mouseWheelEvent, wheelEventListener);
+      document.attachEvent('on' + mouseWheelEvent, wheelEventListener);
     } else if (document.addEventListener) {
       // WC3 browsers
       document.addEventListener(mouseWheelEvent, wheelEventListener);

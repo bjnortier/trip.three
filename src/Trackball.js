@@ -73,7 +73,6 @@ class Trackball {
     let state;
     let azimElevOnDragStart;
     let lastMousePosition;
-    let cameraPositionAtStart;
     let mouseLeftVec;
     let mouseUpVec;
 
@@ -82,7 +81,6 @@ class Trackball {
         azimuth: target.azimuth,
         elevation: target.elevation,
       };
-      cameraPositionAtStart = scene.camera.position.clone();
       lastMousePosition = eventPosition;
 
       // Use center of screen to find ray direction

@@ -2,9 +2,8 @@
 
 const tripcore = require('trip.core');
 const tripdom = require('trip.dom');
-const $ = tripdom.$;
 
-const lib = require('../../../../..');
+const lib = require('../../../../../src');
 
 var CubeView = require('../views/CubeView');
 var AxesView = require('../views/AxesView');
