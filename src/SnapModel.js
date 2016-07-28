@@ -57,6 +57,29 @@ class SnapModel extends Model {
           localX,
         };
       }
+      case 'DESERIALIZE': {
+        const origin = action.origin;
+        const normal = action.normal;
+        const localX = action.localX;
+        const grid = {
+          ...state.grid,
+          size: action.gridSize,
+          extents: action.extents,
+        };
+        return {
+          ...state,
+          grid,
+          snappables: {
+            surface: action.snapSurface,
+            edge: action.snapEdge,
+            vertex: action.snapVertex,
+            grid: action.snapGrid,
+          },
+          origin,
+          normal,
+          localX,
+        };
+      }
       default:
         if (action.type !== '@@redux/INIT') {
           console.warn('UNKNOWN ACTION', action);
@@ -118,8 +141,7 @@ class SnapModel extends Model {
 
   serialize() {
     return {
-      size : this.size,
-      sizeOptions : this.sizeOptions,
+      gridSize : this.gridSize,
       extents : this.extents,
       snapGrid : this.snapGrid,
       snapVertex : this.snapVertex,
@@ -132,17 +154,10 @@ class SnapModel extends Model {
   }
 
   deserialize(state) {
-    this.size = state.size;
-    this.sizeOptions = state.sizeOptions;
-    this.extents = state.extents;
-    this.snapGrid = state.snapGrid;
-    this.snapVertex = state.snapVertex;
-    this.snapEdge = state.snapEdge;
-    this.snapSurface = state.snapSurface;
-    this.origin = state.origin;
-    this.normal = state.normal;
-    this.localX = state.localX;
-    this.emitChange();
+    this.store.dispatch({
+      type: 'DESERIALIZE',
+      ...state,
+    });
   }
 
 }

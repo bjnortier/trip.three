@@ -2,7 +2,7 @@
 
 const trip = require('trip.core');
 
-const lib = require('../../../../..');
+const lib = require('../../../../../src');
 const Scene = lib.Scene;
 
 const AxesView = require('../views/AxesView');

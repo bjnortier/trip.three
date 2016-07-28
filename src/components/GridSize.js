@@ -25,4 +25,4 @@ const GridSize = ({ sizeOptions, currentSize, enabled, onChange }) => {
   );
 };
 
-export default GridSize;
+module.exports = GridSize;

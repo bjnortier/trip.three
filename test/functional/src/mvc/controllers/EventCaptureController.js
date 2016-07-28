@@ -3,7 +3,7 @@
 const tripcore = require('trip.core');
 const tripdom = require('trip.dom');
 
-const lib = require('../../../../..');
+const lib = require('../../../../../src');
 
 const EventCaptureModel = require('../models/EventCaptureModel');
 const EventCaptureView = require('../views/EventCaptureView');

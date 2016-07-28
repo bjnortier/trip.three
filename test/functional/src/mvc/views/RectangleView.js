@@ -1,6 +1,6 @@
 'use strict';
 
-const lib = require('../../../../..');
+const lib = require('../../../../../src');
 const THREE = lib.THREE;
 const View = lib.View;
 

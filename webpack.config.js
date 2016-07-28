@@ -10,7 +10,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        include: /(lib|test|node_modules\/trip.core\/lib|node_modules\/trip.dom\/lib)/,
+        include: /(src|test|node_modules\/trip.core\/lib|node_modules\/trip.dom\/lib)/,
         loader: 'babel',
         query: {
           presets: [

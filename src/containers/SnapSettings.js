@@ -35,4 +35,4 @@ const SnapSettings = connect(
   mapDispatchToProps
 )(SnapSettingsView);
 
-export default SnapSettings;
+module.exports = SnapSettings;

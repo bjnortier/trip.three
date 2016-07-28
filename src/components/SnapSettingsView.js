@@ -20,4 +20,4 @@ const SnapSettings = ({ snappables, grid, onSnapClick, onGridSizeChange }) => {
   );
 };
 
-export default SnapSettings;
+module.exports = SnapSettings;

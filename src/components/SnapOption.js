@@ -22,4 +22,4 @@ SnapOption.propTypes = {
   isEnabled: PropTypes.bool.isRequired,
 };
 
-export default SnapOption;
+module.exports = SnapOption;
