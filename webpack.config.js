@@ -10,13 +10,8 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        include: /(src|test|node_modules\/trip.core\/lib|node_modules\/trip.dom\/lib)/,
+        exclude: /node_modules\/(three|jquery|moment)/,
         loader: 'babel',
-        query: {
-          presets: [
-            require.resolve('babel-preset-es2015'),
-          ],
-        },
       },
     ],
   },
