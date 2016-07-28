@@ -18,9 +18,9 @@ class SnapModel extends Model {
           grid: options.snapGrid || true,
         },
         grid: {
-          size: options.size || 1.0,
-          sizeOptions: options.sizeOptions || [1.0, 0.5, 0.1],
-          extents: options.extents || 10,
+          size: options.gridSize || 1.0,
+          sizeOptions: options.gridSizeOptions || [1.0, 0.5, 0.1],
+          extents: options.gridExtents || 10,
         },
         origin: {
           x: 0, y: 0, z: 0,

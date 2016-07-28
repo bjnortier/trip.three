@@ -46,7 +46,8 @@ class SnapTestController extends tripcore.Controller {
       {
         viewFilterForEdgeSnap: viewFilterForEdgeSnap,
         viewFilterForSurfaceSnap: viewFilterForSurfaceSnap,
-        extents: 30,
+        gridSize: 0.5,
+        gridExtents: 30,
       });
     snapCtrl.setXY();
 
