@@ -9,13 +9,13 @@ const GridSize = ({ sizeOptions, currentSize, enabled, onChange }) => {
       onChange={() => {
         onChange(select.value);
       }}
+      value={currentSize}
     >
       {sizeOptions.map((size, i) => {
         return (
           <option
             key={i}
             value={size}
-            defaultChecked={currentSize === size}
           >
           {size}
           </option>
