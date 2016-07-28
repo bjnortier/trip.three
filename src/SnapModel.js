@@ -44,7 +44,14 @@ class SnapModel extends Model {
         };
       }
       case 'CHANGE_GRID_SIZE': {
-        return Object.assign({}, state, {gridSize: parseFloat(action.size, 10)});
+        const grid = {
+          ...state.grid,
+          size: parseFloat(action.size, 10),
+        };
+        return {
+          ...state,
+          grid,
+        };
       }
       case 'CHANGE_ORIGIN_AND_ORIENTATION': {
         const origin = action.origin;
