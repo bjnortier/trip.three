@@ -2,14 +2,15 @@
 
 const gulp = require('gulp');
 const path = require('path');
-const jshint = require('gulp-jshint');
-const jscs = require('gulp-jscs');
-const jscsStylish = require('gulp-jscs-stylish');
+const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
+const babel = require('babel-register');
 
 const srcFiles = path.join('lib', '**', '*.js');
 const unitTestFiles = path.join('test', 'unit', '**', '*.test.js');
 const functionalTestFiles = path.join('test', 'functional', 'src', '*.js');
+
+const allJSFiles = ['**/*.js','!node_modules/**'];
 
 // ----- Individual Tasks -----
 
@@ -17,30 +18,29 @@ gulp.task('clearconsole', () => {
   process.stdout.write('\x1Bc');
 });
 
-gulp.task('jshint', () => {
-  return gulp.src([srcFiles, unitTestFiles, functionalTestFiles])
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(jshint.reporter('fail'));
+gulp.task('lint', () => {
+  return gulp.src(allJSFiles)
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
 
-gulp.task('jscs', () => {
-  return gulp.src([srcFiles, unitTestFiles])
-    .pipe(jscs())
-    .pipe(jscsStylish());
-});
-
-gulp.task('unit', ['jshint', 'jscs'], () => {
+gulp.task('unit', [], () => {
   return gulp.src(unitTestFiles)
-    .pipe(mocha({}));
+    .pipe(mocha({
+      compilers: {
+        js: babel,
+      },
+    }));
 });
 
-gulp.task('test', ['jshint', 'jscs', 'unit']);
+gulp.task('test', ['lint', 'unit']);
 
 gulp.task('default', ['test']);
 
 gulp.task('watch', () => {
-  gulp.watch(srcFiles, ['clearconsole', 'jshint', 'jscs', 'unit']);
-  gulp.watch(unitTestFiles, ['clearconsole', 'jshint', 'jscs', 'unit']);
-  gulp.watch(functionalTestFiles, ['clearconsole', 'jshint', 'jscs']);
+  gulp.watch(allJSFiles, ['clearconsole', 'lint']);
+  gulp.watch(srcFiles, ['clearconsole', 'lint', 'unit']);
+  gulp.watch(unitTestFiles, ['clearconsole', 'lint', 'unit']);
+  gulp.watch(functionalTestFiles, ['clearconsole', 'lint']);
 });

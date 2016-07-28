@@ -1,11 +1,10 @@
 'use strict';
 
 const trip = require('trip.core');
-const $ = require('trip.dom').$;
 const Controller = trip.Controller;
 const Model = trip.Model;
 
-const lib = require('../../../../..');
+const lib = require('../../../../../src');
 const Scene = lib.Scene;
 
 const RectangleView = require('../views/RectangleView');

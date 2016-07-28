@@ -4,7 +4,7 @@ const tripcore = require('trip.core');
 const tripdom = require('trip.dom');
 const $ = tripdom.$;
 
-const lib = require('../../../../..');
+const lib = require('../../../../../src');
 const SnapController = lib.SnapController;
 
 const SnapTestModel = require('../models/SnapTestModel');
@@ -65,7 +65,7 @@ class SnapTestController extends tripcore.Controller {
       label: 'c2',
       color: 0xff6666,
       position: {x: 0.6, y: 0, z: 0},
-      size: 0.2
+      size: 0.2,
     });
 
     this.addView(valuesDOMScene, CoordinateDOMView, {
@@ -135,7 +135,7 @@ class SnapTestController extends tripcore.Controller {
       },
       localX: {
         x: 1, y: 0, z: 0,
-      }
+      },
     });
   }
 
@@ -153,7 +153,7 @@ class SnapTestController extends tripcore.Controller {
       },
       localX: {
         x: 0, y: 1, z: 0,
-      }
+      },
     });
   }
 
@@ -171,7 +171,7 @@ class SnapTestController extends tripcore.Controller {
       },
       localX: {
         x: 0, y: 0, z: 1,
-      }
+      },
     });
   }
 }
