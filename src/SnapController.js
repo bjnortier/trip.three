@@ -61,6 +61,11 @@ class SnapController extends Controller {
         snapResult.type,
         snapResult.object);
     });
+    this.plugins = [];
+  }
+
+  registerSnapPlugin(plugin) {
+    this.plugins.push(plugin);
   }
 
   setXY() {
@@ -234,6 +239,21 @@ class SnapController extends Controller {
         });
       }
     }
+
+    // Plugin candidates
+    this.plugins.forEach((plugin) => {
+      const closestResults = plugin(mouseScreenPos, mouseWorldPos, camera);
+      closestResults.forEach((result) => {
+        const snapScreenPos = toScreenPosition(width, height, camera, result.position);
+        snapCandidates.push({
+          distance: distance(snapScreenPos, mouseScreenPos),
+          position: round(result.position, 0.001),
+          view: result.view,
+          type: result.type,
+          object: result.mesh,
+        });
+      });
+    });
 
     if (snapCandidates.length) {
       let closest = snapCandidates.reduce((acc, c) => {
