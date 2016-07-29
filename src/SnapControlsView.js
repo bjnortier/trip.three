@@ -26,7 +26,7 @@ class SnapControlsView extends DOMView {
   }
 
   update() {
-    // this.render();
+    this.render();
   }
 
 }
