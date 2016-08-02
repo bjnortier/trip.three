@@ -108,12 +108,12 @@ class ContainerEventGenerator {
     const mouseWheelEvent = (/Firefox/i.test(navigator.userAgent)) ?
       'DOMMouseScroll' : 'mousewheel'; // FF doesn't recognize mousewheel as of FF3.x
 
-    if (document.attachEvent) {
+    if (container[0].attachEvent) {
       // if IE (and Opera depending on user setting)
-      document.attachEvent('on' + mouseWheelEvent, wheelEventListener);
-    } else if (document.addEventListener) {
+      container[0].attachEvent('on' + mouseWheelEvent, wheelEventListener);
+    } else if (container[0].addEventListener) {
       // WC3 browsers
-      document.addEventListener(mouseWheelEvent, wheelEventListener);
+      container[0].addEventListener(mouseWheelEvent, wheelEventListener);
     }
   }
 
