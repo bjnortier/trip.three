@@ -174,7 +174,6 @@ class SnapController extends Controller {
         new V3().addVectors(
           planeLocalX.clone().multiplyScalar(snappedLocalX),
           planeLocalY.clone().multiplyScalar(snappedLocalY)));
-      snapped = round(snapped, 0.001);
 
       const snapScreenPos = toScreenPosition(width, height, camera, snapped);
       snapCandidates.push({
@@ -190,7 +189,7 @@ class SnapController extends Controller {
           v.vertices.forEach((c) => {
             const snapScreenPos = toScreenPosition(width, height, camera, c);
             snapCandidates.push({
-              position: round(c, 0.01),
+              position: c, 0.01,
               distance: distance(snapScreenPos, mouseScreenPos),
               view: v,
               type: 'vertex',
@@ -211,7 +210,7 @@ class SnapController extends Controller {
               const snapScreenPos = toScreenPosition(width, height, camera, snapEdgePos);
               snapCandidates.push({
                 distance: distance(snapScreenPos, mouseScreenPos),
-                position: round(snapEdgePos, 0.001),
+                position: snapEdgePos,
                 view: v,
                 type: 'edge',
                 object: e,
@@ -232,7 +231,7 @@ class SnapController extends Controller {
         const snapScreenPos = toScreenPosition(width, height, camera, closestViewResult.position);
         snapCandidates.push({
           distance: distance(snapScreenPos, mouseScreenPos),
-          position: round(closestViewResult.position, 0.001),
+          position: closestViewResult.position,
           view: closestViewResult.view,
           type: 'surface',
           object: closestViewResult.mesh,
@@ -247,7 +246,7 @@ class SnapController extends Controller {
         const snapScreenPos = toScreenPosition(width, height, camera, result.position);
         snapCandidates.push({
           distance: distance(snapScreenPos, mouseScreenPos),
-          position: round(result.position, 0.001),
+          position: result.position,
           view: result.view,
           type: result.type,
           object: result.mesh,
@@ -267,7 +266,7 @@ class SnapController extends Controller {
         return acc;
       }, undefined);
       return {
-        position: closest.position,
+        position: round(closest.position, 0.001),
         view: closest.view,
         type: closest.type,
         object: closest.object,
