@@ -189,7 +189,7 @@ class SnapController extends Controller {
           v.vertices.forEach((c) => {
             const snapScreenPos = toScreenPosition(width, height, camera, c);
             snapCandidates.push({
-              position: c, 0.01,
+              position: c,
               distance: distance(snapScreenPos, mouseScreenPos),
               view: v,
               type: 'vertex',
