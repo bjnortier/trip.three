@@ -6,6 +6,11 @@ const SnapModel = require('../../src').SnapModel;
 const defaultSnapState = {
   'grid': {
     'extents': 10,
+    'extentsOptions': [
+      1,
+      5,
+      10,
+    ],
     'size': 1,
     'sizeOptions': [
       1,
@@ -94,6 +99,11 @@ describe('Snap Model', () => {
     const expectedState = {
       'grid': {
         'extents': 20,
+        'extentsOptions': [
+          1,
+          5,
+          10,
+        ],
         'size': 5,
         'sizeOptions': [
           1.0,

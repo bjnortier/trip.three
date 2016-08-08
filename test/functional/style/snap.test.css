@@ -35,6 +35,10 @@
   right: 20px;
 }
 
+label {
+  margin: 2.5px;
+}
+
 .coordinate td {
   min-width: 20px;
   padding: 2px;

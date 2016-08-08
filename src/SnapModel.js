@@ -21,6 +21,7 @@ class SnapModel extends Model {
           size: options.gridSize || 1.0,
           sizeOptions: options.gridSizeOptions || [1.0, 0.5, 0.1],
           extents: options.gridExtents || 10,
+          extentsOptions: options.gridExtentsOptions || [1.0, 5.0,  10.0],
         },
         origin: {
           x: 0, y: 0, z: 0,
@@ -47,6 +48,16 @@ class SnapModel extends Model {
         const grid = {
           ...state.grid,
           size: parseFloat(action.size, 10),
+        };
+        return {
+          ...state,
+          grid,
+        };
+      }
+      case 'CHANGE_GRID_EXTENTS': {
+        const grid = {
+          ...state.grid,
+          extents: parseFloat(action.extents, 10),
         };
         return {
           ...state,

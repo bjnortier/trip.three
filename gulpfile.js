@@ -6,7 +6,7 @@ const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
 const babel = require('babel-register');
 
-const srcFiles = path.join('lib', '**', '*.js');
+const srcFiles = path.join('src', '**', '*.js');
 const unitTestFiles = path.join('test', 'unit', '**', '*.test.js');
 const functionalTestFiles = path.join('test', 'functional', 'src', '*.js');
 

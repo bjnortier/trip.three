@@ -11,3 +11,10 @@ export const changeGridSize = (size) => {
     size,
   };
 };
+
+export const changeGridExtents = (extents) => {
+  return {
+    type: 'CHANGE_GRID_EXTENTS',
+    extents,
+  };
+};
