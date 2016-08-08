@@ -1,6 +1,6 @@
 const connect = require('react-redux').connect;
 const actions = require('../actions');
-const { toggleSnap , changeGridSize } = actions;
+const { toggleSnap , changeGridSize, changeGridExtents } = actions;
 const SnapSettingsView = require('../components/SnapSettingsView');
 
 const mapStateToProps = (state) => {
@@ -14,6 +14,8 @@ const mapStateToProps = (state) => {
     grid: {
       sizeOptions: state.grid.sizeOptions,
       currentSize: state.grid.size,
+      extentsOptions: state.grid.extentsOptions,
+      currentExtents: state.grid.extents,
       enabled: state.snappables.grid,
     },
   };
@@ -26,6 +28,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onGridSizeChange: (size) => {
       dispatch(changeGridSize(size));
+    },
+    onGridExtentsChange: (size) => {
+      dispatch(changeGridExtents(size));
     },
   };
 };

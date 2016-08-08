@@ -29,7 +29,7 @@ class SnapTestController extends tripcore.Controller {
       elevation: Math.PI/4,
       azimuth: -Math.PI/4,
       near: 0.1,
-      far: 100,
+      far: 1000,
       layers: 2,
     });
     this.scene = threeJSScene;
@@ -47,7 +47,7 @@ class SnapTestController extends tripcore.Controller {
         viewFilterForEdgeSnap: viewFilterForEdgeSnap,
         viewFilterForSurfaceSnap: viewFilterForSurfaceSnap,
         gridSize: 0.5,
-        gridExtents: 30,
+        gridExtents: 10,
       });
     snapCtrl.setXY();
 
