@@ -313,52 +313,62 @@ class Scene extends tripcore.Scene {
       // is necessary
       _this.render();
 
-      // Find the screen coordinates of bounding Box corners
-      let worldPositions = [
-        new THREE.Vector3(bounds.min.x, bounds.min.y, bounds.min.z),
-        new THREE.Vector3(bounds.min.x, bounds.max.y, bounds.min.z),
-        new THREE.Vector3(bounds.max.x, bounds.min.y, bounds.min.z),
-        new THREE.Vector3(bounds.max.x, bounds.max.y, bounds.min.z),
-        new THREE.Vector3(bounds.min.x, bounds.min.y, bounds.max.z),
-        new THREE.Vector3(bounds.min.x, bounds.max.y, bounds.max.z),
-        new THREE.Vector3(bounds.max.x, bounds.min.y, bounds.max.z),
-        new THREE.Vector3(bounds.max.x, bounds.max.y, bounds.max.z),
-      ];
-      // Distance from center
-      let dx = -Infinity;
-      let dy = -Infinity;
-      let halfWidth = _this.width/2;
-      let halfHeight = _this.height/2;
-      let centerX = halfWidth;
-      let centerY = halfHeight;
-      for (let i = 0; i < worldPositions.length; ++i) {
-        let screenPos = toScreenPosition(
-          _this.width, _this.height, _this.camera, worldPositions[i]);
-        let dx2 = Math.abs(screenPos.x - centerX);
-        let dy2 = Math.abs(screenPos.y - centerY);
-        if (dx2 > dx) {
-          dx = dx2;
+      console.log('>>>', _this.mode);
+
+      if (_this.mode === 'perspective') {
+
+        // The calculated distance will put the camera
+        // where the field of view will enclose the radius
+        const boundingSphere = bounds.getBoundingSphere();
+        const radius = boundingSphere.radius;
+        _this.trackball.updateTarget({
+          distance: radius*Math.tan(_this.camera.fov/180*Math.PI),
+        });
+
+      } else if (_this.mode === 'orthographic') {
+
+        // Find the screen coordinates of bounding Box corners
+        let worldPositions = [
+          new THREE.Vector3(bounds.min.x, bounds.min.y, bounds.min.z),
+          new THREE.Vector3(bounds.min.x, bounds.max.y, bounds.min.z),
+          new THREE.Vector3(bounds.max.x, bounds.min.y, bounds.min.z),
+          new THREE.Vector3(bounds.max.x, bounds.max.y, bounds.min.z),
+          new THREE.Vector3(bounds.min.x, bounds.min.y, bounds.max.z),
+          new THREE.Vector3(bounds.min.x, bounds.max.y, bounds.max.z),
+          new THREE.Vector3(bounds.max.x, bounds.min.y, bounds.max.z),
+          new THREE.Vector3(bounds.max.x, bounds.max.y, bounds.max.z),
+        ];
+        // Distance from center
+        let dx = -Infinity;
+        let dy = -Infinity;
+        let halfWidth = _this.width/2;
+        let halfHeight = _this.height/2;
+        let centerX = halfWidth;
+        let centerY = halfHeight;
+        for (let i = 0; i < worldPositions.length; ++i) {
+          let screenPos = toScreenPosition(
+            _this.width, _this.height, _this.camera, worldPositions[i]);
+          let dx2 = Math.abs(screenPos.x - centerX);
+          let dy2 = Math.abs(screenPos.y - centerY);
+          if (dx2 > dx) {
+            dx = dx2;
+          }
+          if (dy2 > dy) {
+            dy = dy2;
+          }
         }
-        if (dy2 > dy) {
-          dy = dy2;
-        }
+
+        let xFactor = dx/halfWidth;
+        let yFactor = dy/halfHeight;
+        let factor = Math.max(xFactor, yFactor);
+
+        _this.trackball.updateTarget({
+          distance: _this.trackball.currentTarget.distance*factor,
+        });
       }
-
-      let xFactor = dx/halfWidth;
-      let yFactor = dy/halfHeight;
-      let factor = Math.max(xFactor, yFactor);
-
-      _this.trackball.updateTarget({
-        distance: _this.trackball.currentTarget.distance*factor,
-      });
-      return factor;
     }
 
-    const f = zoom();
-    // See function description
-    if ((f > 1.0) && (this.mode === 'perspective')) {
-      zoom();
-    }
+    zoom();
 
   }
 
