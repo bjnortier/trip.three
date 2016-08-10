@@ -288,30 +288,43 @@ class Scene extends tripcore.Scene {
       };
     }
 
+    // So the zoom is slightly further out
+    // and the objetcs are not on the edges of the viewport
+    const padFactor = 1.2;
+
     let filteredViews = this.views.filter((view) => {
       return filters.view(view) && filters.layer(view.layer);
     });
 
-    const _this = this;
-    function zoom() {
+    let bounds = new THREE.Box3();
+    filteredViews.forEach((v) => {
+      bounds.union(new THREE.Box3().setFromObject(v.sceneObject));
+    });
 
-      let bounds = new THREE.Box3();
-      filteredViews.forEach((v) => {
-        bounds.union(new THREE.Box3().setFromObject(v.sceneObject));
+    if (bounds.isEmpty()) {
+      console.warn('empty bounds');
+      return;
+    }
+
+    this.trackball.updateTarget({
+      lookAt: bounds.center(),
+    });
+    this.trackball.updateCamera();
+    // render() somehow changes the camera state, not sure why this
+    // is necessary
+    this.render();
+
+    if (this.mode === 'perspective') {
+
+      // The calculated distance will put the camera
+      // where the field of view will enclose the radius
+      const boundingSphere = bounds.getBoundingSphere();
+      const radius = boundingSphere.radius;
+      this.trackball.updateTarget({
+        distance: radius*Math.tan(this.camera.fov/180*Math.PI)*padFactor,
       });
 
-      if (bounds.isEmpty()) {
-        console.warn('empty bounds');
-        return;
-      }
-
-      _this.trackball.updateTarget({
-        lookAt: bounds.center(),
-      });
-      _this.trackball.updateCamera();
-      // render() somehow changes the camera state, not sure why _this
-      // is necessary
-      _this.render();
+    } else if (this.mode === 'orthographic') {
 
       // Find the screen coordinates of bounding Box corners
       let worldPositions = [
@@ -327,13 +340,13 @@ class Scene extends tripcore.Scene {
       // Distance from center
       let dx = -Infinity;
       let dy = -Infinity;
-      let halfWidth = _this.width/2;
-      let halfHeight = _this.height/2;
+      let halfWidth = this.width/2;
+      let halfHeight = this.height/2;
       let centerX = halfWidth;
       let centerY = halfHeight;
       for (let i = 0; i < worldPositions.length; ++i) {
         let screenPos = toScreenPosition(
-          _this.width, _this.height, _this.camera, worldPositions[i]);
+          this.width, this.height, this.camera, worldPositions[i]);
         let dx2 = Math.abs(screenPos.x - centerX);
         let dy2 = Math.abs(screenPos.y - centerY);
         if (dx2 > dx) {
@@ -346,18 +359,11 @@ class Scene extends tripcore.Scene {
 
       let xFactor = dx/halfWidth;
       let yFactor = dy/halfHeight;
-      let factor = Math.max(xFactor, yFactor);
+      let factor = Math.max(xFactor, yFactor)*1;2;
 
-      _this.trackball.updateTarget({
-        distance: _this.trackball.currentTarget.distance*factor,
+      this.trackball.updateTarget({
+        distance: this.trackball.currentTarget.distance*factor*padFactor,
       });
-      return factor;
-    }
-
-    const f = zoom();
-    // See function description
-    if ((f > 1.0) && (this.mode === 'perspective')) {
-      zoom();
     }
 
   }
