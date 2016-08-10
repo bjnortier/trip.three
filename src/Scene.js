@@ -313,8 +313,6 @@ class Scene extends tripcore.Scene {
       // is necessary
       _this.render();
 
-      console.log('>>>', _this.mode);
-
       if (_this.mode === 'perspective') {
 
         // The calculated distance will put the camera

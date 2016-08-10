@@ -26,8 +26,6 @@ class Trackball {
     function updateCamera() {
       if (scene.mode === 'perspective') {
         let r = target.distance;
-        console.log('r', r);
-        console.log('lookAt', target.lookAt);
         let elev = target.elevation;
         let azim = target.azimuth;
         let lookAt = target.lookAt;
