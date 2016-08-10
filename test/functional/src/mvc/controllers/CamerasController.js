@@ -40,7 +40,7 @@ class CamerasController extends tripcore.Controller {
     });
     this.addView(scene, CubeView, {
       color: 0x00ff00,
-      position: {x: 0, y: 2.5, z: 0},
+      position: {x: 0, y: 12.5, z: 0},
       name: 'green',
     });
     this.addView(scene, AxesView, {
