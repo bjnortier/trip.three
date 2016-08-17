@@ -7,7 +7,6 @@ const Provider = require('react-redux').Provider;
 const App = require('./components/App');
 
 const tripdom = require('trip.dom');
-const $ = tripdom.$;
 const DOMView = tripdom.View;
 
 class SnapControlsView extends DOMView {
@@ -22,7 +21,7 @@ class SnapControlsView extends DOMView {
       <Provider store={this.model.store}>
         <App />
       </Provider>,
-      $(this.$el)[0]
+      this.$el[0]
     );
   }
 
