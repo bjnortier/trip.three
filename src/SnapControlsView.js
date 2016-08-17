@@ -17,11 +17,12 @@ class SnapControlsView extends DOMView {
   }
 
   render() {
+    super.render();
     reactRender(
       <Provider store={this.model.store}>
         <App />
       </Provider>,
-      $(this.scene.container)[0]
+      $(this.$el)[0]
     );
   }
 
