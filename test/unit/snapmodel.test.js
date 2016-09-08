@@ -35,9 +35,10 @@ const defaultSnapState = {
   },
   'snappables': {
     'edge': false,
+    'midpoint': false,
+    'vertex': false,
     'grid': true,
     'surface': false,
-    'vertex': false,
   },
 };
 
@@ -60,6 +61,7 @@ describe('Snap Model', () => {
       snappables: {
         surface: true,
         edge: false,
+        midpoint: false,
         vertex: false,
         grid: true,
       },
@@ -76,6 +78,7 @@ describe('Snap Model', () => {
       extents : 10,
       snapGrid : true,
       snapVertex : false,
+      snapMidpoint : false,
       snapEdge : false,
       snapSurface : false,
       origin : {x: 0, y: 0, z: 0},
@@ -83,12 +86,12 @@ describe('Snap Model', () => {
       localX : {x: 1, y: 0, z: 0},
     });
 
-
     m.deserialize({
       gridSize : 5,
       extents : 20,
       snapGrid : false,
       snapVertex : true,
+      snapMidpoint : true,
       snapEdge : true,
       snapSurface : true,
       origin : {x: 10, y: 7, z: 8},
@@ -100,6 +103,7 @@ describe('Snap Model', () => {
       'grid': {
         'extents': 20,
         'extentsOptions': [
+          
           1,
           5,
           10,
@@ -129,6 +133,7 @@ describe('Snap Model', () => {
       'snappables': {
         'surface': true,
         'edge': true,
+        'midpoint': true,
         'vertex': true,
         'grid': false,
       },

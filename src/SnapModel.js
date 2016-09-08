@@ -14,6 +14,7 @@ class SnapModel extends Model {
         snappables: {
           surface: options.snapSurface || false,
           edge: options.snapEdge || false,
+          midpoint: options.snapMidpoint || false,
           vertex: options.snapVertex || false,
           grid: options.snapGrid || true,
         },
@@ -90,6 +91,7 @@ class SnapModel extends Model {
           snappables: {
             surface: action.snapSurface,
             edge: action.snapEdge,
+            midpoint: action.snapMidpoint,
             vertex: action.snapVertex,
             grid: action.snapGrid,
           },
@@ -113,6 +115,10 @@ class SnapModel extends Model {
 
     this.__defineGetter__('snapEdge', () => {
       return this.store.getState().snappables.edge;
+    });
+
+    this.__defineGetter__('snapMidpoint', () => {
+      return this.store.getState().snappables.midpoint;
     });
 
     this.__defineGetter__('snapVertex', () => {
@@ -163,6 +169,7 @@ class SnapModel extends Model {
       extents : this.extents,
       snapGrid : this.snapGrid,
       snapVertex : this.snapVertex,
+      snapMidpoint : this.snapMidpoint,
       snapEdge : this.snapEdge,
       snapSurface : this.snapSurface,
       origin : this.origin,
