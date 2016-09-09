@@ -6,6 +6,9 @@
   "directories": {
     "test": "test"
   },
+  "engines": {
+    "node": "4.2.2"
+  },
   "scripts": {
     "compile": "node_modules/babel-cli/bin/babel.js --optional runtime -d lib/ src/",
     "prepublish": "npm run compile",
