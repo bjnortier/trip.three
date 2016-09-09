@@ -9,6 +9,7 @@ const SnapController = lib.SnapController;
 
 const SnapTestModel = require('../models/SnapTestModel');
 const CubeView = require('../views/CubeView');
+const AxesView = require('../views/AxesView');
 const CoordinateDOMView = require('../views/CoordinateDOMView');
 const Coordinate3View = require('../views/Coordinate3View');
 const CameraSelectView = require('../views/CameraSelectView');
@@ -67,6 +68,10 @@ class SnapTestController extends tripcore.Controller {
       color: 0xff6666,
       position: {x: 0.6, y: 0, z: 0},
       size: 0.2,
+    });
+    this.addView(threeJSScene, AxesView, {
+      length: 5,
+      name: 'axes',
     });
 
     this.addView(valuesDOMScene, CoordinateDOMView, {

@@ -200,6 +200,24 @@ class SnapController extends Controller {
       });
     }
 
+    // Intersection candidates
+    if (model.snapIntersection) {
+      scene.views.forEach((v) => {
+        if (v.intersections) {
+          v.intersections.forEach((c) => {
+            const snapScreenPos = toScreenPosition(width, height, camera, c);
+            snapCandidates.push({
+              position: c,
+              distance: distance(snapScreenPos, mouseScreenPos),
+              view: v,
+              type: 'intersection',
+              object: c,
+            });
+          });
+        }
+      });
+    }
+
     // Midpoint candidates
     if (model.snapMidpoint) {
       const vertices = [];

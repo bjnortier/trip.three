@@ -37,6 +37,7 @@ const defaultSnapState = {
     'edge': false,
     'midpoint': false,
     'vertex': false,
+    'intersection': false,
     'grid': true,
     'surface': false,
   },
@@ -63,6 +64,7 @@ describe('Snap Model', () => {
         edge: false,
         midpoint: false,
         vertex: false,
+        intersection: false,
         grid: true,
       },
     };
@@ -77,6 +79,7 @@ describe('Snap Model', () => {
       gridSize : 1,
       extents : 10,
       snapGrid : true,
+      snapIntersection : false,
       snapVertex : false,
       snapMidpoint : false,
       snapEdge : false,
@@ -90,6 +93,7 @@ describe('Snap Model', () => {
       gridSize : 5,
       extents : 20,
       snapGrid : false,
+      snapIntersection : true,
       snapVertex : true,
       snapMidpoint : true,
       snapEdge : true,
@@ -103,7 +107,7 @@ describe('Snap Model', () => {
       'grid': {
         'extents': 20,
         'extentsOptions': [
-          
+
           1,
           5,
           10,
@@ -134,6 +138,7 @@ describe('Snap Model', () => {
         'surface': true,
         'edge': true,
         'midpoint': true,
+        'intersection': true,
         'vertex': true,
         'grid': false,
       },
