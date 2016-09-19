@@ -1,13 +1,13 @@
 {
   "name": "trip.three",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Three.js addon for Trip",
   "main": "lib/index.js",
   "directories": {
     "test": "test"
   },
   "engines": {
-    "node": "4.2.2"
+    "node": ">= 4.2.2"
   },
   "scripts": {
     "compile": "node_modules/babel-cli/bin/babel.js --optional runtime -d lib/ src/",
