@@ -3,7 +3,7 @@ const SnapOption = require('./SnapOption');
 const GridSize = require('./GridSize');
 const GridExtents = require('./GridExtents');
 
-const SnapSettings = ({ snappables, grid, onSnapClick, onGridSizeChange, onGridExtentsChange }) => {
+const SnapControls = ({ snappables, grid, onSnapClick, onGridSizeChange, onGridExtentsChange }) => {
   return (
     <div>
       {snappables.map(snappable => {
@@ -28,4 +28,4 @@ const SnapSettings = ({ snappables, grid, onSnapClick, onGridSizeChange, onGridE
   );
 };
 
-module.exports = SnapSettings;
+module.exports = SnapControls;

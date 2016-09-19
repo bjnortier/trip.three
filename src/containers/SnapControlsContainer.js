@@ -1,7 +1,7 @@
 const connect = require('react-redux').connect;
 const actions = require('../actions');
 const { toggleSnap , changeGridSize, changeGridExtents } = actions;
-const SnapSettingsView = require('../components/SnapSettingsView');
+const SnapControls = require('../components/SnapControls');
 
 const mapStateToProps = (state) => {
   return {
@@ -35,9 +35,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const SnapSettings = connect(
+module.exports = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SnapSettingsView);
-
-module.exports = SnapSettings;
+)(SnapControls);

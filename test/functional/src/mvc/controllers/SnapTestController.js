@@ -6,6 +6,8 @@ const $ = tripdom.$;
 
 const lib = require('../../../../../src');
 const SnapController = lib.SnapController;
+const CPlane3View = lib.CPlane3View;
+const SnapControlsView = lib.SnapControlsView;
 
 const SnapTestModel = require('../models/SnapTestModel');
 const CubeView = require('../views/CubeView');
@@ -43,13 +45,14 @@ class SnapTestController extends tripcore.Controller {
     };
     const snapCtrl = new SnapController(
       threeJSScene,
-      new tripdom.Scene($('#snap-controls')),
       {
         viewFilterForEdgeSnap: viewFilterForEdgeSnap,
         viewFilterForSurfaceSnap: viewFilterForSurfaceSnap,
         gridSize: 0.5,
         gridExtents: 10,
       });
+    snapCtrl.addView(new tripdom.Scene($('#snap-controls')), SnapControlsView);
+    snapCtrl.addView(threeJSScene, CPlane3View);
     snapCtrl.setXY();
 
     this.snapCtrl = snapCtrl;
