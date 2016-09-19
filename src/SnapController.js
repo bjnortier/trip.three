@@ -4,8 +4,6 @@ const Controller = require('trip.core').Controller;
 const V3 = require('three').Vector3;
 
 const SnapModel = require('./SnapModel');
-const SnapControlsView = require('./SnapControlsView');
-const CPlane3View = require('./CPlane3View');
 
 const toWorldPosition = require('./util/toWorldPosition');
 const toScreenPosition = require('./util/toScreenPosition');
@@ -16,7 +14,7 @@ const findClosestViewForScreenPosition = require('./util/findClosestViewForScree
 
 class SnapController extends Controller {
 
-  constructor(threeJSScene, controlsScene, options) {
+  constructor(threeJSScene, options) {
     options = options || {};
     super(new SnapModel(options));
 
@@ -24,13 +22,6 @@ class SnapController extends Controller {
     this.viewFilterForSurfaceSnap = options.viewFilterForSurfaceSnap || filterNone;
     this.viewFilterForEdgeSnap = options.viewFilterForEdgeSnap || filterNone;
     this.threeJSScene = threeJSScene;
-    if (!options.hideControls) {
-      this.addView(controlsScene, SnapControlsView);
-    }
-
-    const cplaneOptions = options.cplaneOptions || {};
-    this.addView(threeJSScene, CPlane3View, cplaneOptions);
-
     threeJSScene.rawEventGenerator.on('mousemove', (event, screenPos) => {
       const worldPos = toWorldPosition(
         threeJSScene.width,

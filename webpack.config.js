@@ -19,7 +19,6 @@ module.exports = {
     path: 'test/functional/bundle/',
     filename: '[name].bundle.js',
   },
-  devtool: 'eval',
   node: {
     net: 'empty',
     dns: 'empty',
