@@ -19,8 +19,7 @@ class SnapController extends Controller {
     super(new SnapModel(options));
 
     const filterNone = () => { return true; };
-    this.viewFilterForSurfaceSnap = options.viewFilterForSurfaceSnap || filterNone;
-    this.viewFilterForEdgeSnap = options.viewFilterForEdgeSnap || filterNone;
+    this.viewFilter = options.viewFilter || filterNone;
     this.threeJSScene = threeJSScene;
     threeJSScene.rawEventGenerator.on('mousemove', (event, screenPos) => {
       const worldPos = toWorldPosition(
@@ -52,11 +51,6 @@ class SnapController extends Controller {
         snapResult.type,
         snapResult.object);
     });
-    this.plugins = [];
-  }
-
-  registerSnapPlugin(plugin) {
-    this.plugins.push(plugin);
   }
 
   setXY() {
@@ -176,7 +170,7 @@ class SnapController extends Controller {
     // Vertex candidates
     if (model.snapVertex) {
       scene.views.forEach((v) => {
-        if (v.vertices) {
+        if (v.vertices && this.viewFilter(v)) {
           v.vertices.forEach((c) => {
             const snapScreenPos = toScreenPosition(width, height, camera, c);
             snapCandidates.push({
@@ -194,7 +188,7 @@ class SnapController extends Controller {
     // Intersection candidates
     if (model.snapIntersection) {
       scene.views.forEach((v) => {
-        if (v.intersections) {
+        if (v.intersections && this.viewFilter(v)) {
           v.intersections.forEach((c) => {
             const snapScreenPos = toScreenPosition(width, height, camera, c);
             snapCandidates.push({
@@ -213,7 +207,7 @@ class SnapController extends Controller {
     if (model.snapMidpoint) {
       const vertices = [];
       scene.views.forEach((v) => {
-        if (v.edges && this.viewFilterForEdgeSnap(v)) {
+        if (v.edges && this.viewFilter(v)) {
           v.edges.forEach((e) => {
             vertices.push([v, new V3().addVectors(e[0], e[1]).multiplyScalar(0.5)]);
           });
@@ -234,7 +228,7 @@ class SnapController extends Controller {
     // Edge candidates
     if (model.snapEdge) {
       scene.views.forEach((v) => {
-        if (v.edges && this.viewFilterForEdgeSnap(v)) {
+        if (v.edges && this.viewFilter(v)) {
           v.edges.forEach((e) => {
             const snapEdgePos = closestPointToEdge(mouseWorldPos, e, camera);
             if (snapEdgePos) {
@@ -257,7 +251,7 @@ class SnapController extends Controller {
       const closestViewResult = findClosestViewForScreenPosition(
         scene,
         mouseScreenPos,
-        this.viewFilterForSurfaceSnap);
+        this.viewFilter);
       if (closestViewResult) {
         const snapScreenPos = toScreenPosition(width, height, camera, closestViewResult.position);
         snapCandidates.push({
@@ -269,21 +263,6 @@ class SnapController extends Controller {
         });
       }
     }
-
-    // Plugin candidates
-    this.plugins.forEach((plugin) => {
-      const closestResults = plugin(mouseScreenPos, mouseWorldPos, camera);
-      closestResults.forEach((result) => {
-        const snapScreenPos = toScreenPosition(width, height, camera, result.position);
-        snapCandidates.push({
-          distance: distance(snapScreenPos, mouseScreenPos),
-          position: result.position,
-          view: result.view,
-          type: result.type,
-          object: result.mesh,
-        });
-      });
-    });
 
     if (snapCandidates.length) {
       let closest = snapCandidates.reduce((acc, c) => {
