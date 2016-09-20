@@ -111,6 +111,10 @@ class SnapModel extends Model {
     };
     this.store = createStore(reducer);
 
+    this.__defineGetter__('snappables', () => {
+      return Object.assign({}, this.store.getState().snappables);
+    });
+
     this.__defineGetter__('snapSurface', () => {
       return this.store.getState().snappables.surface;
     });
